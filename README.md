@@ -1,4 +1,4 @@
-# gki-lahai-roi-mefkajim-ayamaru
+# GKI Lahai-Roi Mefkajim Ayamaru
 New Portal App for supporting Church Ministry.
 
 # Tech
