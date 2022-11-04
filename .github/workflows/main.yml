@@ -21,7 +21,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps: 
-      - name: Checkout repository
+      - name: Checkout repositorys
         uses: actions/checkout@main
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
