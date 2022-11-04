@@ -1,26 +1,19 @@
 on:
   push:
-    branches: [ main ]
-name: Deploy website on push
+    branches: [main]
+name: 🚀 Deploy website on push
 jobs:
   web-deploy:
-    name: Auto Deploy
+    name: 🎉 Auto Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
+    - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
-    - name: Create Node Envirinment
-      uses: actions/setup-node@v3
-      with: 
-          node-version: 10.x
-    - name: Install Package and build apps
-      run: |
-        npm install -g @vue/cli
-        
-    - name: Sync files
+
+    - name: 📂 Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete --exclude=".git"
+        switches: -avzr --delete --exclude=".git" --exclude=".github"
         path: /
         remote_path: ${{ secrets.DEPLOYMENT_DEV_PATH }}
         remote_host: ${{ secrets.DEPLOYMENT_HOST }}
