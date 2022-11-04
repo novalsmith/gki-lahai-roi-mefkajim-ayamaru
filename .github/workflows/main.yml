@@ -12,7 +12,7 @@ jobs:
     - name: Create Node Envirinment
       uses: actions/setup-node@v1
       with: 
-          node-version: 10x
+          node-version: 10.x
     - name: Install Package and build apps
       run: |
         npm install -g @vue/cli
