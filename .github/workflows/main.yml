@@ -1,23 +1,40 @@
+name: Build and deploy
 on:
   push:
-    branches: 
-    - main
-name: 🚀 Deploy website on push
+    branches: [main]
+  workflow_dispatch:
+
 jobs:
-  web-deploy:
-    name: 🎉 Auto Deploy
+  build:
+    name: Build ⛏
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v2
-
-    - name: 📂 Sync filess
-      uses: burnett01/rsync-deployments@5.2.1
-      with:
-        switches: -avzr --delete
-        path: /
-        remote_path: /home/u1608522/public_html/dev/
-        remote_host: dev.gkilahairoiayamaru.com
-        remote_user: u1608522
-        remote_key: ${{ secrets.DEPLOYMENT_KEY }}
-        remote_key_pass: lahairoi@2022
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Install dependencies
+        run: npm ci
+      - name: Build dependencies
+        run: npm run build
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: dist
+          path: dist
+  deploy:
+    name: Deploy 🚀
+    needs: build
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout repository
+        uses: actions/checkout@main
+      - name: Download artifact
+        uses: actions/download-artifact@main
+        with: 
+          name: dist
+          path: dist
+      - name: Sync files to hosting
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with: 
+          server: ftplahairoi@dev.gkilahairoiayamaru.com
+          username: ftplahairoi
+          password: ${{ secrets.ftp_password }}
