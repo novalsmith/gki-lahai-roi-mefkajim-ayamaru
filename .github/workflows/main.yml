@@ -28,4 +28,4 @@ jobs:
         with: 
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi
-          password: ${{ secrets.ftp_password }}
+          password: ${{ secrets.FTP_PASSWORD }}
