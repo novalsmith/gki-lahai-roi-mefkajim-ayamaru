@@ -26,6 +26,6 @@ jobs:
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
-          server: gkilahairoiayamaru.com
+          server: gkilahairoiayamaru.com/public_html/dev
           username: u1608522
           password: ${{ secrets.FTP_PASSWORD }}
