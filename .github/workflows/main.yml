@@ -26,6 +26,6 @@ jobs:
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
-          server: ftplahairoi@dev.gkilahairoiayamaru.com
+          server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi
           password: ${{ secrets.ftp_password }}
