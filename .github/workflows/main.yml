@@ -9,7 +9,16 @@ jobs:
     steps:
     - name: Get latest code
       uses: actions/checkout@v2.3.2
-
+    - name: Create Node Envirinment
+      uses: actions/setup-node@v1
+      with: 
+          node-version: 10x
+    - name: Install Package and build apps
+      run: |
+        npm install -g @vue/cli
+        npm install
+        npm run build
+        
     - name: Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
