@@ -1,0 +1,23 @@
+on:
+  push:
+    branches: 
+    - main
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Auto Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+
+    - name: 📂 Sync filess
+      uses: burnett01/rsync-deployments@5.2.1
+      with:
+        switches: -avzr --delete
+        path: /
+        remote_path: /home/u1608522/public_html/dev/
+        remote_host: dev.gkilahairoiayamaru.com
+        remote_user: u1608522
+        remote_key: ${{ secrets.DEPLOYMENT_KEY }}
+        remote_key_pass: lahairoi@2022
