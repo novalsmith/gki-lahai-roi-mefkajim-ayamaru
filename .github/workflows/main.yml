@@ -20,7 +20,7 @@ jobs:
     - name: Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
-        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        switches: -avzr --delete --exclude=".git"
         path: /
         remote_path: ${{ secrets.DEPLOYMENT_DEV_PATH }}
         remote_host: ${{ secrets.DEPLOYMENT_HOST }}
