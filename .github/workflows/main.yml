@@ -16,15 +16,13 @@ jobs:
     - name: Install Package and build apps
       run: |
         npm install -g @vue/cli
-        npm install
-        npm run build
         
     - name: Sync files
       uses: burnett01/rsync-deployments@4.1
       with:
         switches: -avzr --delete --exclude=".git" --exclude=".github"
         path: /
-        remote_path: ${{ secrets.DEPLOYMENT_PROD_PATH }}
+        remote_path: ${{ secrets.DEPLOYMENT_DEV_PATH }}
         remote_host: ${{ secrets.DEPLOYMENT_HOST }}
         remote_user: ${{ secrets.DEPLOYMENT_USER }}
         remote_key: ${{ secrets.DEPLOYMENT_KEY }}
