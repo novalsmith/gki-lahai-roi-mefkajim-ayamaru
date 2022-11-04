@@ -15,7 +15,7 @@ jobs:
       with:
         switches: -avzr --delete --exclude=".git" --exclude=".github"
         path: /
-        remote_path: ${{ DEPLOYMENT_PROD_PATH }}
+        remote_path: ${{ secrets.DEPLOYMENT_PROD_PATH }}
         remote_host: ${{ secrets.DEPLOYMENT_HOST }}
         remote_user: ${{ secrets.DEPLOYMENT_USER }}
         remote_key: ${{ secrets.DEPLOYMENT_KEY }}
