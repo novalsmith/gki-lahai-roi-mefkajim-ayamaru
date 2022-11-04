@@ -1,6 +1,7 @@
 on:
   push:
-    branches: [main]
+    branches: 
+    - main
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -8,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v2.3.2
+      uses: actions/checkout@v2
 
     - name: 📂 Sync filess
-      uses: contention/rsync-deployments@v1.0.0
+      uses: burnett01/rsync-deployments@5.2.1
       with:
-        switches: -avzr --delete --exclude=".git" --exclude=".github"
+        switches: -avzr --delete
         path: /
         remote_path: ${{ secrets.DEPLOYMENT_DEV_PATH }}
         remote_host: ${{ secrets.DEPLOYMENT_HOST }}
