@@ -4,7 +4,7 @@ name: Workflow Deployment by Noval Nauw
 
 on:
   # Allow you to run this workflow manualy from the actions tab
-  workflow_dispach:
+  workflow_dispatch:
 
 jobs: 
     build:
