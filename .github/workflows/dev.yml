@@ -32,7 +32,4 @@ jobs:
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
           exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
             testingnote.txt
