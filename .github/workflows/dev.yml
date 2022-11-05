@@ -1,4 +1,4 @@
-name: Build and deploy
+name: Dev - Build and deploy
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Build ⛏
+    name: Dev - Build ⛏
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,7 +17,7 @@ jobs:
           name: dist
           path: dist
   deploy:
-    name: Deploy 🚀
+    name: Dev - Deploy 🚀
     needs: build
     runs-on: ubuntu-latest
     steps: 
