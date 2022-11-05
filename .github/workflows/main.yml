@@ -8,15 +8,11 @@ on:
 
 jobs:
   build:
-    name: Test Env - Build ⛏
+    name: Build ⛏
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@main
-          
-  deploy:
-    name: Test Env - Deploy 🚀
-    needs: build  
+        uses: actions/checkout@main  
   Dev:
     runs-on: ubuntu-latest
     environment: Dev
@@ -32,6 +28,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
+          npm audit fix
           npm run build
 
       - name: Sync files to hosting
@@ -63,7 +60,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm audit fix --force
+          npm audit fix
           npm run build
 
       - name: Sync files to hosting
@@ -95,7 +92,7 @@ jobs:
         - name: 🔨 Build Project
           run: |
             npm install
-            npm audit fix --force
+            npm audit fix
             npm run build
 
         - name: Sync files to hosting
