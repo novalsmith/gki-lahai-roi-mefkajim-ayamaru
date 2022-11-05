@@ -24,12 +24,24 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm run build
+        
       - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
+          dry-run: true
           exclude: |
             testingnote.txt
