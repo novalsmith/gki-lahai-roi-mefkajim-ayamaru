@@ -18,6 +18,10 @@ jobs:
           name: dist
           path: dist
           
+      - name: Clean for Deploy
+        run: |
+          rm testingnote.txt
+          
   deploy:
     name: Dev - Deploy 🚀
     needs: build
