@@ -18,10 +18,6 @@ jobs:
           name: dist
           path: dist
           
-      - name: Clean for Deploy
-        run: |
-          rm .txt
-          
   deploy:
     name: Dev - Deploy 🚀
     needs: build
@@ -35,4 +31,8 @@ jobs:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
-          ARGS: --delete
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            testingnote.txt
