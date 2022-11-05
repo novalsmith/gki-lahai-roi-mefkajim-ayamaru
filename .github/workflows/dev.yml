@@ -1,7 +1,7 @@
 name: Dev - Build and deploy
 on:
   push:
-    branches: [main]
+    branches: [features/news-app-lahai-roi-mefkajim-ayamaru]
   workflow_dispatch:
 
 jobs:
