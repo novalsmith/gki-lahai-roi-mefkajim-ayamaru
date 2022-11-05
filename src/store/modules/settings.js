@@ -43,7 +43,7 @@ const {
 
 
 const state = {
-    color: "teal",
+    color: "indigo",
     isMobileData: null,
     isDarkMode: false,
     outlinedGeneralButton: true,
