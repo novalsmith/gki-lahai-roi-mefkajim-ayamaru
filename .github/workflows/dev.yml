@@ -41,7 +41,10 @@ jobs:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
+          local-dir: dist/
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
+            public
+            src
