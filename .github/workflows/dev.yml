@@ -1,5 +1,6 @@
 name: Dev - Build and deploy
 on:
+  push:
   pull_request:
     branches: [news-app-lahai-roi-mefkajim-ayamaru]
   workflow_dispatch:
@@ -26,6 +27,7 @@ jobs:
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
+          switches: -avzr --delete --exclude=".git" --exclude=".github"
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
