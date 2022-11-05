@@ -20,7 +20,7 @@ jobs:
           
       - name: Clean for Deploy
         run: |
-          rm testingnote.txt
+          rm .txt
           
   deploy:
     name: Dev - Deploy 🚀
