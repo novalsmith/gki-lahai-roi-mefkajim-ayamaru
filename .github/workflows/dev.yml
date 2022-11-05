@@ -18,10 +18,6 @@ jobs:
           name: dist
           path: dist
           
-      - name: Clean for Deploy
-        run: |
-          rm sample
-          
   deploy:
     name: Dev - Deploy 🚀
     needs: build
@@ -31,8 +27,8 @@ jobs:
         uses: actions/checkout@main
       - name: Sync files to hosting
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with: 
-          switches: -avzr --delete --exclude=".git" --exclude=".github"
+        with:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
+          ARGS: --delete
