@@ -13,10 +13,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@main
-          
-  deploy:
-    name: Test Env - Deploy 🚀
-    needs: build  
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: dist
+          path: dist
   Dev:
     runs-on: ubuntu-latest
     environment: Dev
