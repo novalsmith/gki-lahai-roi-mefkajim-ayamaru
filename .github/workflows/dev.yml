@@ -2,7 +2,7 @@ name: Dev - Build and deploy
 on:
   push:
   pull_request:
-    branches: [news-app-lahai-roi-mefkajim-ayamaru]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
           
       - name: Clean for Deploy
         run: |
-          rm /
+          rm .
           
   deploy:
     name: Dev - Deploy 🚀
