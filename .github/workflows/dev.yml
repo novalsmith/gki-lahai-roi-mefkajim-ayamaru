@@ -20,7 +20,7 @@ jobs:
           
       - name: Clean for Deploy
         run: |
-          rm -r sample
+          rm sample
           
   deploy:
     name: Dev - Deploy 🚀
