@@ -1,6 +1,6 @@
 name: Dev - Build and deploy
 on:
-  push:
+  pull_request:
     branches: [news-app-lahai-roi-mefkajim-ayamaru]
   workflow_dispatch:
 
