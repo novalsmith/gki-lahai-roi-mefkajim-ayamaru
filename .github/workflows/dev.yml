@@ -1,7 +1,6 @@
 name: Dev - Build and deploy
 on:
   push:
-  pull_request:
     branches: [main]
   workflow_dispatch:
 
@@ -42,7 +41,6 @@ jobs:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_dev@dev.gkilahairoiayamaru.com
           password: ftplahairoi_dev@2022
-          dry-run: true
           exclude: |
             **/.git*
             **/.git*/**
