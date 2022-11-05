@@ -1,7 +1,6 @@
 name: Test Env - Build and deploy
 on:
   push:
-    pull_request:
       branches: 
         - main
 workflow_dispatch:
