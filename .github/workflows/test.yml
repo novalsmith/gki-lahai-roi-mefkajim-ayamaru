@@ -1,4 +1,4 @@
-name: Test - Build and deploy
+name: Test Env - Build and deploy
 on:
   push:
     pull_request:
@@ -7,14 +7,14 @@ on:
 workflow_dispatch:
   jobs:
     build:
-      name: Test - Build ⛏
+      name: Test Env - Build ⛏
       runs-on: ubuntu-latest
       steps:
         - name: Checkout repository
           uses: actions/checkout@main
             
     deploy:
-      name: Test - Deploy 🚀
+      name: Test Env - Deploy 🚀
       needs: build
       runs-on: ubuntu-latest
       steps: 
