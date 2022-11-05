@@ -1,69 +1,73 @@
 <template>
     <v-row>
         <Breadcrumbs />
-      
+
         <v-row>
             <v-col md="3">
-            <v-card class="mx-auto rounded-lg mb-10">
-                <v-list>
-                    <v-subheader>Agenda</v-subheader>
-                    <v-list-item-group v-model="selectedItem" :color="settings.color">
-                        <v-list-item v-for="(item, i) in items" :key="i">
-                            <v-list-item-content>
-                                <v-list-item-title v-text="item.text"></v-list-item-title>
-                            </v-list-item-content>
+                <v-card class="mx-auto rounded-lg mb-10">
+                    <v-list>
+                        <v-subheader>Agenda</v-subheader>
+                        <v-list-item-group v-model="selectedItem" :color="settings.color">
+                            <v-list-item v-for="(item, i) in items" :key="i">
+                                <v-list-item-content>
+                                    <v-list-item-title v-text="item.text"></v-list-item-title>
+                                </v-list-item-content>
 
-                            <v-chip class="mx-5 my-5 white--text" circle small :color="settings.color">
-                                {{item.total}}
-                            </v-chip>
+                                <v-chip class="mx-5 my-5 white--text" circle small :color="settings.color">
+                                    {{ item.total }}
+                                </v-chip>
 
 
-                        </v-list-item>
-                    </v-list-item-group>
-                </v-list>
-            </v-card>
-            <!-- Category Section -->
+                            </v-list-item>
+                        </v-list-item-group>
+                    </v-list>
+                </v-card>
+                <!-- Category Section -->
 
-            <C_CategorySection/>
+                <C_CategorySection />
 
-        </v-col>
+            </v-col>
 
-        <v-col md="9">
-            <v-row>
-                <v-col md="4" v-for="item in listData">
-                    <v-hover v-slot="{ hover }" open-delay="200">
-                        <router-link :to="'/agenda/detail/'+item.title"  class="text-decoration-none">
-                            <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                                <v-img class="white--text align-end" :height="settings.defaultImageSmallContentHeight"  src="../assets/profilemefkajim.jpg">
-                                    <v-chip color="teal" class="mx-5 my-5 white--text">
-                                        <v-icon class="mx-1">
-                                        mdi-bell
-                                    </v-icon> {{item.date}}
-                                    </v-chip>
-                                </v-img> 
-                            
-                                <v-row>
-                                    <v-col md="6">
-                                        <v-chip class="mx-5 my-5 white--text" :outlined="settings.outlinedGeneralButton" small :color="settings.color" >
-                                            Sidang Klasis
-                                        </v-chip> 
-                                    </v-col>
-                                    <v-col md="6">
-                                        <v-card-subtitle class="float-right">
-                                            {{item.date}}
-                                        </v-card-subtitle>
-                                    </v-col>
-                                
-                                </v-row> 
-                                <v-divider class="mx-5"></v-divider>
-                                <v-card-title class="font-weight-regular">{{item.title}}</v-card-title>
-                            </v-card>
-                        </router-link> 
-                       
-                    </v-hover>
-                </v-col>
-            </v-row>
-        </v-col>
+            <v-col md="9">
+                <v-row>
+                    <v-col md="4" v-for="item in listData">
+                        <v-hover v-slot="{ hover }" open-delay="200">
+                            <router-link :to="'/agenda/detail/' + item.title" class="text-decoration-none">
+                                <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
+                                    <v-img class="white--text align-end"
+                                        :height="settings.defaultImageSmallContentHeight"
+                                        src="../assets/profilemefkajim.jpg">
+                                        <v-chip :color="settings.color" class="mx-5 my-5 white--text">
+                                            <v-icon class="mx-1">
+                                                mdi-bell
+                                            </v-icon> {{ item.date }}
+                                        </v-chip>
+                                    </v-img>
+
+                                    <v-row>
+                                        <v-col md="6">
+                                            <v-chip class="mx-5 my-5 white--text"
+                                                :outlined="settings.outlinedGeneralButton" small
+                                                :color="settings.color">
+                                                Sidang Klasis
+                                            </v-chip>
+                                        </v-col>
+                                        <v-col md="6">
+                                            <v-card-subtitle class="float-right">
+                                                {{ item.date }}
+                                            </v-card-subtitle>
+                                        </v-col>
+
+                                    </v-row>
+                                    <v-divider class="mx-5"></v-divider>
+                                    <v-card-title class="font-weight-regular">{{ item.title }}</v-card-title>
+                                </v-card>
+                            </router-link>
+
+                        </v-hover>
+                    </v-col>
+                </v-row>
+            </v-col>
         </v-row>
     </v-row>
 

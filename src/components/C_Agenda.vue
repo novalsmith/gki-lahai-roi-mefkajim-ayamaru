@@ -22,7 +22,7 @@
                     <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                         <v-img class="white--text align-end" :height="settings.defaultImageContentHeight"
                             src="../assets/profilemefkajim.jpg">
-                            <v-chip color="teal" class="mx-5 my-5 white--text">
+                            <v-chip :color="settings.color" class="mx-5 my-5 white--text">
                                 <v-icon class="mx-1">
                                     mdi-bell
                                 </v-icon> {{ item.date }}
