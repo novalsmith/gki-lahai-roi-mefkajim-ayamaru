@@ -1,8 +1,8 @@
 name: Test - Build and deploy
 on:
-  pull_request:
+    pull_request:
       branches: [main]
-  workflow_dispatch:
+        workflow_dispatch:
 
 jobs:
   build:
@@ -11,21 +11,36 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@main
-      - name: Archive production artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: dist
-          path: dist
+          
   deploy:
-    name: Tests - Deploy 🚀
+    name: Test - Deploy 🚀
     needs: build
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout repository
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
+        
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      - name: 🔨 Build Project
+        run: |
+          npm install
+          npm audit fix --force
+          npm run build
+        
       - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with: 
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
           server: ftp.gkilahairoiayamaru.com
           username: ftplahairoi_test@test.gkilahairoiayamaru.com
           password: ftplahairoi_test@2022
+          local-dir: dist/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            public
+            src
