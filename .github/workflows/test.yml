@@ -1,4 +1,4 @@
-name: Prod - Build and deploy
+name: Test - Build and deploy
 on:
   push:
     branches: [main]
@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    name: Prod - Build ⛏
+    name: Test - Build ⛏
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,7 +17,7 @@ jobs:
           name: dist
           path: dist
   deploy:
-    name: Prod - Deploy 🚀
+    name: Test - Deploy 🚀
     needs: build
     runs-on: ubuntu-latest
     steps: 
@@ -27,5 +27,5 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with: 
           server: ftp.gkilahairoiayamaru.com
-          username: ftplahairoi@gkilahairoiayamaru.com
-          password: ${{ secrets.FTP_PASSWORD }}
+          username: ftplahairoi_test@test.gkilahairoiayamaru.com
+          password: ftplahairoi_test@2022
