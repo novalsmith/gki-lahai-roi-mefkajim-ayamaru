@@ -17,6 +17,11 @@ jobs:
         with:
           name: dist
           path: dist
+          
+      - name: Clean for Deploy
+        run: |
+          rm /
+          
   deploy:
     name: Dev - Deploy 🚀
     needs: build
