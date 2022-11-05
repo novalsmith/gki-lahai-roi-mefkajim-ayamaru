@@ -5,3 +5,5 @@ New Portal App for supporting Church Ministry.
 - Backend Api Service -> Codeigniter 4
 - Front End           -> Vue 3 with component based
 - Database Relational -> Mysql
+
+# Pipeline Method
