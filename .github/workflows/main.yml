@@ -28,7 +28,6 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm audit fix
           npm run build
 
       - name: Sync files to hosting
@@ -60,7 +59,6 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm audit fix
           npm run build
 
       - name: Sync files to hosting
@@ -92,7 +90,6 @@ jobs:
         - name: 🔨 Build Project
           run: |
             npm install
-            npm audit fix
             npm run build
 
         - name: Sync files to hosting
