@@ -12,8 +12,6 @@ module.exports = {
     });
   },
   pwa: {
-    themeColor: "#130f40",
-    msTileColor: "#130f40",
     name: "GKI Lahai-Roi Mefkajim Ayamaru",
     manifestOptions: {
       "icons": [{
