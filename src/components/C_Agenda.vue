@@ -10,7 +10,7 @@
             <p>Agenda kegiatan yang dilakukan Gereja </p>
         </v-col>
         <v-col md="6">
-            <v-btn to="agenda" v-show="isShowAgenda" icon :color="settings.color" class="white-text float-right" rounded
+            <v-btn to="agenda" v-show="isShowAgenda" small icon :color="settings.color" class="white-text float-right" rounded
                 outlined>
                 <v-icon> mdi-chevron-right</v-icon>
 

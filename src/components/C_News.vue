@@ -8,8 +8,8 @@
                 Informasi</h1>
         </v-col>
         <v-col md="6">
-            <v-btn v-show="isShowNews" :color="settings.color" class="white-text float-right" rounded outlined to="/informasi">
-                Selengkapnya
+            <v-btn v-show="isShowNews" small icon :color="settings.color" class="white-text float-right" rounded outlined to="/informasi">
+                <v-icon> mdi-chevron-right</v-icon>
             </v-btn>
         </v-col>
         <v-col md="4" v-show="isShowNews" v-for="item in listData">
