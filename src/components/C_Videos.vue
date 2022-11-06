@@ -9,8 +9,8 @@
                     Video</h1>
             </v-col>
             <v-col md="6">
-                <v-btn v-show="isShowVideo" :color="settings.color" class="white-text float-right" rounded outlined>
-                    Selengkapnya
+                <v-btn v-show="isShowVideo" icon small :color="settings.color" class="white-text float-right" rounded outlined>
+                    <v-icon> mdi-chevron-right</v-icon>
                 </v-btn>
             </v-col>
         </v-row>

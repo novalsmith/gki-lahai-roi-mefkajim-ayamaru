@@ -17,7 +17,7 @@
       class="mb-15" v-if="settings.screenSize.type.isxs">
       <v-icon color="white">mdi-chevron-up</v-icon>
     </v-btn>
-    <v-btn v-scroll="onScroll" v-show="fab" fab fixed bottom right :color="settings.color" @click="toTop" class="mb-15"
+    <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop" class="mb-15"
       v-else>
       <v-icon color="white">mdi-chevron-up</v-icon>
     </v-btn>
