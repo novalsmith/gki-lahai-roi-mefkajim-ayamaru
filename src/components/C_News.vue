@@ -5,48 +5,47 @@
                 <v-icon>
                     mdi-newspaper-variant-multiple
                 </v-icon>
-                Informasi</h1>
+                Informasi
+            </h1>
         </v-col>
         <v-col md="6">
-            <v-btn v-show="isShowNews" :color="settings.color" class="white-text float-right" rounded outlined to="/informasi">
-                Selengkapnya
+            <v-btn v-show="isShowNews" small :color="settings.color" class="white-text float-right" rounded outlined
+                to="/informasi">
+                <v-icon> mdi-chevron-right</v-icon>
             </v-btn>
         </v-col>
         <v-col md="4" v-show="isShowNews" v-for="item in listData">
             <v-hover v-slot="{ hover }" open-delay="200">
-                <router-link :to="'/informasi/detail/'+item.slugTitle">
+                <router-link :to="'/informasi/detail/' + item.slugTitle">
                     <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                    
-                            <v-img :height="settings.defaultImageContentHeight" src="../assets/lahai5.jpeg"></v-img>
-                    
+
+                        <v-img :height="settings.defaultImageContentHeight" src="../assets/lahai5.jpeg"></v-img>
+
                         <v-row>
                             <v-col md="6">
-                                <v-chip class="mx-5 my-5 white--text" small :color="settings.color" :outlined="settings.outlinedGeneralButton">
-                                    {{item.category}}
+                                <v-chip class="mx-5 my-5 white--text" small :color="settings.color"
+                                    :outlined="settings.outlinedGeneralButton">
+                                    {{ item.category }}
                                 </v-chip>
                             </v-col>
                             <v-col md="6">
                                 <v-card-subtitle class="float-right">
-                                    {{item.date}}
+                                    {{ item.date }}
                                 </v-card-subtitle>
                             </v-col>
                         </v-row>
                         <v-divider class="mx-5"></v-divider>
-                        <v-card-title class="font-weight-regular">{{item.title}}</v-card-title>
+                        <v-card-title class="font-weight-regular">{{ item.title }}</v-card-title>
 
                     </v-card>
-                </router-link> 
+                </router-link>
             </v-hover>
 
         </v-col>
-        <v-col md="12" v-show="isShowNews==false">
-             <v-alert
-                :color="settings.color+' lighten-5'"
-                icon="mdi-information-outline"
-                dense
-            > 
+        <v-col md="12" v-show="isShowNews == false">
+            <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
                 Sementara belum ada informasi
-        </v-alert>
+            </v-alert>
         </v-col>
     </v-row>
 </template>
@@ -111,8 +110,8 @@ export default {
             }
         ]
     }),
-    mounted(){
-        this.isShowNews = this.listData.length > 0 ? true :  false;
+    mounted() {
+        this.isShowNews = this.listData.length > 0 ? true : false;
     }
 }
 </script> 
