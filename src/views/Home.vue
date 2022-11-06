@@ -22,7 +22,7 @@
             <Poster />
           </v-col>
         </v-row>
-        <!-- <Videos /> -->
+        <Videos />
         <Galery />
       </v-container>
     </v-main>
@@ -39,7 +39,7 @@ import News from '@/components/C_News.vue';
 import Documents from '@/components/C_Documents.vue';
 import Poster from '@/components/C_Poster.vue';
 import Parallax from '@/components/C_Parallax.vue';
-// import Videos from '@/components/C_Videos.vue';
+import Videos from '@/components/C_Videos.vue';
 import Galery from '@/components/C_Galery.vue';
 
 export default {
@@ -52,7 +52,7 @@ export default {
     Documents,
     Poster,
     Parallax,
-    // Videos,
+    Videos,
     Galery
   }
 }

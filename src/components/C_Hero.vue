@@ -2,24 +2,12 @@
 
 
     <div class="my-5" v-if="!settings.screenSize.type.islg">
-   
-
-            <h2 class="font-weight-regular" :color="color">Selamat Datang di <br> GKI Lahai-Roi Mefkajim Ayamaru
-            </h2>
-<!-- 
-            <v-spacer></v-spacer>
-
-            <v-btn :color="settings.color" to="profil" class="white-text" icon outlined>
-                <v-icon>mdi-chevron-right</v-icon>
-            </v-btn> -->
-
-    
+        <h2 class="font-weight-regular" :color="color">Selamat Datang di <br> GKI Lahai-Roi Mefkajim Ayamaru
+        </h2>
         <router-link to="profil">
-            <img src="../assets/profilemefkajim.jpg" aspect-ratio="1.7" class="rounded-xl my-5" width="100%" alt="">
+            <img src="../assets/profilemefkajim.jpg" aspect-ratio="1.7" class="rounded-lg my-5" width="100%" alt="">
         </router-link>
-
     </div>
-
 
     <v-row class="my-5" v-else>
         <v-col lg="6">
