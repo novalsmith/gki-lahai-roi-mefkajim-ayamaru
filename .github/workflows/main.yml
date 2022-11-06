@@ -3,8 +3,6 @@ name: Workflow CI/CD
 # Control when the action will run
 
 on:
-  pull_request:
-    branches: [ main ]
   # Allow you to run this workflow manualy from the actions tab
   workflow_dispatch:
 
