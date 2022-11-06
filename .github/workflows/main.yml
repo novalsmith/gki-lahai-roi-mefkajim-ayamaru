@@ -45,7 +45,8 @@ jobs:
             src
   Test:
     runs-on: ubuntu-latest
-    environment: Test 
+    environment: Test
+    needs: Dev
     steps: 
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -75,7 +76,8 @@ jobs:
             src
   Production:
       runs-on: ubuntu-latest
-      environment: Production 
+      environment: Production
+      needs: Test
       steps: 
         - name: Checkout repository
           uses: actions/checkout@v2
