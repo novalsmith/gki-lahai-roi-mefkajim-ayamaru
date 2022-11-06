@@ -4,31 +4,31 @@
       <Breadcrumbs />
       <v-col md="10" offset-md="1">
         <h1 class="font-weight-regular text-center">Pesparawi nasional di maybrat</h1>
-          <v-row class="my-1">
-              <v-col md="4" class="text-center">
-                  <v-chip outlined small :color="settings.color" :to="`/informasi/kategori/natal`">
-                    Sidang Klasis
-                  </v-chip>
-              </v-col>
-              <v-col md="4" class="text-center">
-                  <p> Rabu, 12 Okt 2022 18:41 WIB</p>
-              </v-col>
-              <v-col md="4" class="text-right">
-                Bagikan
-                <v-btn class="circle" icon :color="settings.color">
-                  <v-icon>mdi-facebook</v-icon>
-                </v-btn>
-                <v-btn class="circle" icon :color="settings.color">
-                  <v-icon>mdi-email</v-icon>
-                </v-btn>
-                <v-btn class="circle" icon :color="settings.color">
-                  <v-icon>mdi-whatsapp</v-icon>
-                </v-btn>
-              </v-col>
-          </v-row>
+        <v-row class="my-1">
+          <v-col md="4" class="text-center">
+            <v-chip outlined small :color="settings.color" :to="`/informasi/kategori/natal`">
+              Sidang Klasis
+            </v-chip>
+          </v-col>
+          <v-col md="4" class="text-center">
+            <p> 12 Okt 2022</p>
+          </v-col>
+          <v-col md="4" class="text-right">
+            Bagikan
+            <v-btn class="circle" icon :color="settings.color">
+              <v-icon>mdi-facebook</v-icon>
+            </v-btn>
+            <v-btn class="circle" icon :color="settings.color">
+              <v-icon>mdi-email</v-icon>
+            </v-btn>
+            <v-btn class="circle" icon :color="settings.color">
+              <v-icon>mdi-whatsapp</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
       <v-col md="10" offset-md="1">
-        <v-img class="grey darken-4 rounded-lg" src="../assets/profilemefkajim.jpg">  </v-img>
+        <v-img class="grey darken-4 rounded-lg" src="../assets/profilemefkajim.jpg"> </v-img>
         <div class="my-15">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum repellat libero fugit vero est tempora
             amet, fuga quos ad dignissimos! Quas, necessitatibus maiores eos natus officiis iste repellendus dolorum
@@ -79,8 +79,8 @@
             quis aliquid tempora ea,
             eum aut hic dicta reprehenderit voluptates officiis earum ex,
             atque optio at quas ratione! Temporibus!</p>
-        </div> 
-      </v-col> 
+        </div>
+      </v-col>
     </v-row>
   </div>
 </template>
