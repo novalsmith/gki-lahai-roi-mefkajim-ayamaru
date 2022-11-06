@@ -1,7 +1,7 @@
  
 <template class="mt-1">
   <!-- <v-carousel next-icon="mdi-chevron-right" prev-icon="mdi-chevron-left" cycle delimiter-icon="mdi-minus" -->
-  <v-carousel cycle :show-arrows="false" delimiter-icon="mdi-checkbox-blank-circle-outline" class="mb-15 rounded-xl"
+  <v-carousel cycle :show-arrows="false" delimiter-icon="mdi-checkbox-blank-circle-outline" class="mb-15 rounded-lg"
     :height="imageSize">
     <v-carousel-item v-for="(item, i) in items" :key="i" :src="require(`../assets/${item.img}`)">
       <v-row class="fill-height" align="center" justify="center">
