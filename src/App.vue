@@ -49,7 +49,7 @@ export default {
   },
   data() {
     return {
-      isActiveWeb: false,
+      isActiveWeb: true,
       fab: false
       // itemsMenu: []
     };
