@@ -4,26 +4,30 @@
       <img src="https://cdn.pixelfordinner.cloud/uploads/2014/11/voa_panel_sample-1024x0-c-f.jpg" width="100%" alt=""
         height="200%">
     </v-system-bar>
-    <v-container>
-      <!-- <div v-if="isMobile()">MOBILE</div>
-      <div v-else>DESKTOP OR TABLET</div> -->
-      <C_Header />
-    </v-container>
-    <!-- <v-main>
-      <v-container> -->
-    <!-- <router-link :to="data.path" v-for="data in itemsMenu">{{data.name}} &nbsp;&nbsp;&nbsp;</router-link> -->
-    <router-view />
-    <v-btn v-scroll="onScroll" v-show="fab" fab fixed small bottom right :color="settings.color" @click="toTop"
-      class="mb-15" v-if="settings.screenSize.type.isxs">
-      <v-icon color="white">mdi-chevron-up</v-icon>
-    </v-btn>
-    <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop" class="mb-15"
-      v-else>
-      <v-icon color="white">mdi-chevron-up</v-icon>
-    </v-btn>
-    <!-- </v-container>
-    </v-main> -->
-    <Footers class="mt-15" />
+    <!-- is acctive web for maintenance info or welcoming page -->
+    <div v-if="isActiveWeb">
+      <v-container>
+        <C_Header />
+      </v-container>
+
+      <router-view />
+      <v-btn v-scroll="onScroll" v-show="fab" fab fixed small bottom right :color="settings.color" @click="toTop"
+        class="mb-15" v-if="settings.screenSize.type.isxs">
+        <v-icon color="white">mdi-chevron-up</v-icon>
+      </v-btn>
+      <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop"
+        class="mb-15" v-else>
+        <v-icon color="white">mdi-chevron-up</v-icon>
+      </v-btn>
+      <Footers class="mt-15" />
+    </div>
+    <div v-else>
+      <v-container class="text-center my-15">
+        <h1 class="text-center">Selamat Datang di</h1>
+        <img class="text-center" src="./assets/logoLight.png" />
+      </v-container>
+    </div>
+
   </v-app>
 </template>
 
@@ -45,6 +49,7 @@ export default {
   },
   data() {
     return {
+      isActiveWeb: false,
       fab: false
       // itemsMenu: []
     };
