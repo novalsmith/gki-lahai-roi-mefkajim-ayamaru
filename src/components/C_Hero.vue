@@ -1,7 +1,7 @@
 <template>
 
 
-    <div class="" v-if="!settings.screenSize.type.islg">
+    <div v-if="!settings.screenSize.type.islg">
         <v-flex xs12 class="mb-10">
             <v-hover v-slot="{ hover }" open-delay="200">
                 <router-link to="/agenda/detail/" class="text-decoration-none">
