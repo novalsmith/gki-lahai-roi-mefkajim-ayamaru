@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-system-bar v-show="false" class="px-0 py-0 my-0 my-0">
       <img src="https://cdn.pixelfordinner.cloud/uploads/2014/11/voa_panel_sample-1024x0-c-f.jpg" width="100%" alt=""
         height="200%">
@@ -7,7 +7,12 @@
     <!-- is acctive web for maintenance info or welcoming page -->
     <div v-if="isActiveWeb">
       <v-container>
-        <C_Header />
+        <div v-if="loading">
+          <v-skeleton-loader type="list-item-avatar-three-line"></v-skeleton-loader>
+        </div>
+        <div v-else>
+          <C_Header />
+        </div>
       </v-container>
 
       <router-view />
@@ -19,7 +24,15 @@
         class="mb-15" v-else>
         <v-icon color="white">mdi-chevron-up</v-icon>
       </v-btn>
-      <Footers class="mt-15" />
+
+      <v-container>
+        <div v-if="loading">
+          <v-skeleton-loader type="list-item-avatar-three-line"></v-skeleton-loader>
+        </div>
+        <div v-else>
+          <Footers class="mt-15" />
+        </div>
+      </v-container>
     </div>
     <div v-else>
       <v-container class="text-center my-15">
@@ -42,6 +55,10 @@ export default {
   },
   created() {
     this.setMobileDeviceSettings();
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
   },
   components: {
     C_Header,
@@ -50,7 +67,8 @@ export default {
   data() {
     return {
       isActiveWeb: true,
-      fab: false
+      fab: false,
+      loading: false
       // itemsMenu: []
     };
   },

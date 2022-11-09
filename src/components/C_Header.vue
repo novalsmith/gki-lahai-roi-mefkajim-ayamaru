@@ -15,16 +15,11 @@
                         <v-img alt="Vuetify Name" v-if="settings.screenSize.type.isxs" contain
                             :src="require(`../assets/${imageName}`)" width="100%" max-width="60%" />
                         <v-spacer></v-spacer>
-                        <v-tooltip bottom>
-                            <template v-slot:activator="{ on, attrs }">
-                                <div v-on="on" v-bind="attrs">
-                                    <v-switch inset :color="settings.color" :input-value="darkMode"
-                                        @change="toggleDarkMode" class="my-5">
-                                    </v-switch>
-                                </div>
-                            </template>
-                            <span>Template</span>
-                        </v-tooltip>
+
+                        <v-switch inset :color="settings.color" :input-value="darkMode" @change="toggleDarkMode"
+                            class="my-5">
+                        </v-switch>
+
                         <!-- <SearchingBox class="my-2" /> -->
                     </v-row>
                 </div>
@@ -39,27 +34,20 @@
                         </v-col>
                         <v-col md="8" class="text-right  pt-0 pb-0">
                             <v-row>
-                                <v-col md="9">
+                                <v-col md="10" class="pr-15">
                                     <v-btn small v-for="link in menu.topRight" :key="link.icon" :to="link.path" icon
                                         class="circle mx-2">
 
                                         <v-icon>{{ link.icon }}</v-icon>
-                                    </v-btn>
+                                    </v-btn> 
                                 </v-col>
 
-                                <v-col md="2" class="my-1 pb-0">
+                                <v-col md="1" class="my-1 pb-0">
                                     <template>
                                         <div class="text-center d-flex align-center justify-space-around">
-                                            <v-tooltip bottom>
-                                                <template v-slot:activator="{ on, attrs }">
-                                                    <div v-on="on" v-bind="attrs">
-                                                        <v-switch inset :color="settings.color" :input-value="darkMode"
-                                                            @change="toggleDarkMode">
-                                                        </v-switch>
-                                                    </div>
-                                                </template>
-                                                <span>Template</span>
-                                            </v-tooltip>
+                                            <v-switch inset :color="settings.color" :input-value="darkMode"
+                                                @change="toggleDarkMode">
+                                            </v-switch>
                                         </div>
                                     </template>
                                 </v-col>

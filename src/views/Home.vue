@@ -1,11 +1,16 @@
 <template>
-  <div>
+  <v-main v-if="loading">
+    <v-container>
+      <v-skeleton-loader type="image, article"></v-skeleton-loader>
+    </v-container>
+  </v-main>
+  <div v-else>
     <v-main>
       <v-container>
         <Carausel />
         <Hero />
-        <Agenda />
         <News />
+        <Agenda />
       </v-container>
     </v-main>
     <Parallax />
@@ -54,6 +59,17 @@ export default {
     Parallax,
     Videos,
     Galery
+  },
+  data: () => ({
+    loading: false
+  }),
+  created() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 1000);
+
+
   }
 }
 </script>

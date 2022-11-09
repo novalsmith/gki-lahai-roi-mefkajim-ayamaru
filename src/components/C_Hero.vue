@@ -1,14 +1,37 @@
 <template>
 
 
-    <div class="my-5" v-if="!settings.screenSize.type.islg">
-        <h2 class="font-weight-regular" :color="color">Selamat Datang di <br> GKI Lahai-Roi Mefkajim Ayamaru
-        </h2>
-        <router-link to="profil">
-            <img src="../assets/profilemefkajim.jpg" aspect-ratio="1.7" class="rounded-lg my-5" width="100%" alt="">
-        </router-link>
-    </div>
+    <div class="" v-if="!settings.screenSize.type.islg">
+        <v-flex xs12 class="mb-10">
+            <v-hover v-slot="{ hover }" open-delay="200">
+                <router-link to="/agenda/detail/" class="text-decoration-none">
+                    <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                        <v-container fluid grid-list-lg>
+                            <v-layout row>
+                                <v-flex xs7>
+                                    <div>
+                                        <div class="subheading font-weight-medium">
+                                            Selamat Datang di GKI Lahai-Roi Mefkajim Ayamaru.
+                                        </div>
+                                        <v-btn to="agenda" small icon :color="settings.color" class="white-text my-4"
+                                            rounded outlined>
+                                            <v-icon> mdi-chevron-right</v-icon>
 
+                                        </v-btn>
+                                    </div>
+                                </v-flex>
+                                <v-flex xs5>
+                                    <v-img contain src="../assets/profilemefkajim.jpg" height="auto" class="rounded-lg"
+                                        transition="false">
+                                    </v-img>
+                                </v-flex>
+                            </v-layout>
+                        </v-container>
+                    </v-card>
+                </router-link>
+            </v-hover>
+        </v-flex>
+    </div>
     <v-row class="my-5" v-else>
         <v-col lg="6">
             <h1 class="font-weight-regular" :color="color">Selamat Datang di <br> GKI Lahai-Roi Mefkajim Ayamaru</h1>
