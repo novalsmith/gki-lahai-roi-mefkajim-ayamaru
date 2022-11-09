@@ -1,7 +1,7 @@
 <template>
   <div>
    
-          <v-btn icon small @click="searchingData" large class="d-flex d-sm-none d-md-none d-lg-none my-1">
+          <v-btn icon small @click="searchingData" large class="d-flex d-sm-none d-md-none d-lg-none">
             <v-icon>mdi-magnify</v-icon>
           </v-btn>
       

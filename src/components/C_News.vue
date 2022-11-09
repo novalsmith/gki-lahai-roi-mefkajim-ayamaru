@@ -1,52 +1,60 @@
 <template>
     <v-row class="my-15">
         <v-col md="6">
-            <h1 class="font-weight-regular">
+            <h3 class="font-weight-regular">
                 <v-icon>
                     mdi-newspaper-variant-multiple
                 </v-icon>
-                Informasi</h1>
+                Informasi
+            </h3>
         </v-col>
         <v-col md="6">
-            <v-btn v-show="isShowNews" small icon :color="settings.color" class="white-text float-right" rounded outlined to="/informasi">
-                <v-icon> mdi-chevron-right</v-icon>
+            <v-btn v-show="isShowNews" small text :color="settings.color" class="white-text float-right"
+                to="/informasi">
+                Lainnya
             </v-btn>
         </v-col>
         <v-col md="4" v-show="isShowNews" v-for="item in listData">
-            <v-hover v-slot="{ hover }" open-delay="200">
-                <router-link :to="'/informasi/detail/'+item.slugTitle">
-                    <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                    
-                            <v-img :height="settings.defaultImageContentHeight" src="../assets/lahai5.jpeg"></v-img>
-                    
-                        <v-row>
-                            <v-col md="6">
-                                <v-chip class="mx-5 my-5 white--text" small :color="settings.color" :outlined="settings.outlinedGeneralButton">
-                                    {{item.category}}
-                                </v-chip>
-                            </v-col>
-                            <v-col md="6">
-                                <v-card-subtitle class="float-right">
-                                    {{item.date}}
-                                </v-card-subtitle>
-                            </v-col>
-                        </v-row>
-                        <v-divider class="mx-5"></v-divider>
-                        <v-card-title class="font-weight-regular">{{item.title}}</v-card-title>
-
-                    </v-card>
-                </router-link> 
-            </v-hover>
-
+            <v-flex xs12>
+                <v-hover v-slot="{ hover }" open-delay="200">
+                    <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                        <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                            <v-container fluid grid-list-lg>
+                                <v-layout row>
+                                    <v-flex xs5>
+                                        <v-img contain src="../assets/lahai5.jpeg" height="auto" class="rounded-lg"
+                                            transition="false">
+                                        </v-img>
+                                    </v-flex>
+                                    <v-flex xs7>
+                                        <div>
+                                            <div class="subheading font-weight-medium">
+                                                {{ item.title }}
+                                            </div>
+                                            <v-layout row class="my-3">
+                                                <v-flex xs6>
+                                                    <v-chip class="white--text" small :color="settings.color"
+                                                        :outlined="settings.outlinedGeneralButton">
+                                                        {{ item.category }}
+                                                    </v-chip>
+                                                </v-flex>
+                                                <v-flex xs6>
+                                                    <h5 class="float-right font-weight-regular"> {{ item.date }}</h5>
+                                                </v-flex>
+                                            </v-layout>
+                                        </div>
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card>
+                    </router-link>
+                </v-hover>
+            </v-flex>
         </v-col>
-        <v-col md="12" v-show="isShowNews==false">
-             <v-alert
-                :color="settings.color+' lighten-5'"
-                icon="mdi-information-outline"
-                dense
-            > 
+        <v-col md="12" v-show="isShowNews == false">
+            <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
                 Sementara belum ada informasi
-        </v-alert>
+            </v-alert>
         </v-col>
     </v-row>
 </template>
@@ -111,8 +119,8 @@ export default {
             }
         ]
     }),
-    mounted(){
-        this.isShowNews = this.listData.length > 0 ? true :  false;
+    mounted() {
+        this.isShowNews = this.listData.length > 0 ? true : false;
     }
 }
 </script> 
