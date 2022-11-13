@@ -36,7 +36,9 @@
                                                         image.title
                                                 }}</h3>
                                                 <h5 class="float-left font-weight-regular my-2">
-                                                    {{ image.category }} - {{ image.date }}
+                                                    <v-chip class="ma-2" small>
+                                                        {{ image.category }}
+                                                    </v-chip> {{ image.date }}
                                                 </h5>
                                             </div>
                                         </v-flex>
@@ -46,7 +48,7 @@
                         </router-link>
                     </v-hover>
                 </v-flex>
-            </v-col> 
+            </v-col>
             <v-col md="12" v-show="isShowgalery == false">
                 <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
                     Sementara belum ada album foto
@@ -69,12 +71,12 @@ export default {
         return {
             isShowgalery: false,
             imagesList: [
-                { source: "lahai1.jpeg", category: "asd1", title: "Natal", total: 15, date: "25 Sept 2022", slug: "natal" },
-                { source: "lahai2.jpeg", category: "sds2", title: "Sidang Klasis 2022", total: 23, date: "15 Sept 2022", slug: "sidang-klasis" },
-                { source: "lahai3.jpeg", category: "asdf3", title: "Natal", total: 50, date: "6 Agus 2022", slug: "natal" },
-                { source: "lahai4.jpeg", category: "asdf4", title: "PKB", total: 14, date: "25 Des 2022", slug: "pkb" },
-                { source: "lahai5.jpeg", category: "asdf5", title: "PW", total: 20, date: "2 Sept 2022", slug: "pw" },
-                { source: "lahai6.jpeg", category: "asdf6", title: "Pesparawi", total: 15, date: "8 Sept 2022", slug: "pesparawi" }
+                { source: "lahai1.jpeg", category: "Pesparawi", title: "Natal", total: 15, date: "25 Sept 2022", slug: "natal" },
+                { source: "lahai2.jpeg", category: "KKR", title: "Sidang Klasis 2022", total: 23, date: "15 Sept 2022", slug: "sidang-klasis" },
+                { source: "lahai3.jpeg", category: "Oukumene", title: "Natal", total: 50, date: "6 Agus 2022", slug: "natal" },
+                { source: "lahai4.jpeg", category: "Mefkajim", title: "PKB", total: 14, date: "25 Des 2022", slug: "pkb" },
+                { source: "lahai5.jpeg", category: "Sidang Klasis", title: "PW", total: 20, date: "2 Sept 2022", slug: "pw" },
+                { source: "lahai6.jpeg", category: "Natal", title: "Pesparawi", total: 15, date: "8 Sept 2022", slug: "pesparawi" }
             ]
         }
     },
