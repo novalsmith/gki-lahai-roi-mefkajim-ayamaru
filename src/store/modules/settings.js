@@ -48,7 +48,7 @@ const state = {
     isDarkMode: false,
     outlinedGeneralButton: true,
     defaultImageContentHeight: "300",
-    defaultImageSmallContentHeight: "200",
+    defaultImageSmallContentHeight: "120",
     image: {
         darkmode: "logoDark.png",
         lightmode: "logoLight.png"

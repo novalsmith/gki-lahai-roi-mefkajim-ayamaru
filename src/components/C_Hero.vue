@@ -13,15 +13,15 @@
                                         <div class="subheading font-weight-medium">
                                             Selamat Datang di GKI Lahai-Roi Mefkajim Ayamaru.
                                         </div>
-                                        <v-btn to="agenda" small icon :color="settings.color" class="white-text my-4"
-                                            rounded outlined>
-                                            <v-icon> mdi-chevron-right</v-icon>
+                                        <v-btn to="profil" small :color="settings.color" class="my-4" rounded outlined>
+                                            Profil <v-icon> mdi-chevron-right</v-icon>
 
                                         </v-btn>
                                     </div>
                                 </v-flex>
                                 <v-flex xs5>
-                                    <v-img contain src="../assets/profilemefkajim.jpg" height="auto" class="rounded-lg"
+                                    <v-img src="../assets/profilemefkajim.jpg"
+                                        :height="settings.defaultImageSmallContentHeight" class="rounded-lg"
                                         transition="false">
                                     </v-img>
                                 </v-flex>
@@ -39,8 +39,9 @@
                 Perspiciatis modi
                 ea dolorem? Sapiente maiores architecto eum labore voluptates officia accusamus est cumque
                 corporis fugit, aliquam quibusdam fuga rem, reprehenderit culpa.</p>
-            <v-btn :color="settings.color" to="profil" class="white-text" rounded outlined>
-                Selengkapnya
+            <v-btn to="profil" small :color="settings.color" class="my-4" rounded outlined>
+                Profil <v-icon> mdi-chevron-right</v-icon>
+
             </v-btn>
         </v-col>
         <v-col lg="6">

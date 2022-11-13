@@ -2,51 +2,47 @@
     <div>
         <v-row>
             <v-col md="6">
-                <h1 class="font-weight-regular">
+                <h3 class="font-weight-regular">
                     <v-icon>
-                        mdi-video 
+                        mdi-video
                     </v-icon>
-                    Video</h1>
+                    Video
+                </h3>
             </v-col>
             <v-col md="6">
-                <v-btn v-show="isShowVideo" icon small :color="settings.color" class="white-text float-right" rounded outlined>
-                    <v-icon> mdi-chevron-right</v-icon>
+                <v-btn v-show="isShowVideo" small text :color="settings.color" class="white-text float-right"
+                    to="/informasi">
+                    Semua <v-icon> mdi-chevron-right</v-icon>
                 </v-btn>
             </v-col>
-        </v-row>
-        <v-row class="my-15">
             <v-col v-show="isShowVideo" md="4" v-for="item in listData" :color="settings.color">
                 <v-hover v-slot="{ hover }" open-delay="200">
                     <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                        <iframe width="100%" :height="settings.defaultImageContentHeight"  :src="result" frameborder="0"
+                        <iframe width="100%" :height="settings.defaultImageContentHeight" :src="result" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
 
-                            <v-row>
-                                <v-col md="6">
-                                    <v-chip class="mx-5 my-5 white--text" :outlined="settings.outlinedGeneralButton" small :color="settings.color"
-                                        :to="'/informasi/kategori/natal'">
-                                        Natal
-                                    </v-chip>
-                                </v-col>
-                                <v-col md="6">
-                                    <v-card-subtitle class="float-right">
-                                        25 Sep 2022
-                                    </v-card-subtitle>
-                                </v-col>
-                            </v-row>
-                            <v-divider class="mx-5"></v-divider>
-                            <v-card-title class="font-weight-regular">Sidang Klasis di Maybrat</v-card-title>
+                        <v-row>
+                            <v-col md="6">
+                                <v-chip class="mx-5 my-5 white--text" :outlined="settings.outlinedGeneralButton" small
+                                    :color="settings.color" :to="'/informasi/kategori/natal'">
+                                    Natal
+                                </v-chip>
+                            </v-col>
+                            <v-col md="6">
+                                <v-card-subtitle class="float-right">
+                                    25 Sep 2022
+                                </v-card-subtitle>
+                            </v-col>
+                        </v-row>
+                        <v-divider class="mx-5"></v-divider>
+                        <v-card-title class="font-weight-regular">Sidang Klasis di Maybrat</v-card-title>
 
                     </v-card>
                 </v-hover>
             </v-col>
-            <v-col md="12" v-show="isShowVideo==false">
-                <v-alert
-                    :color="settings.color+' lighten-5'"
-                    icon="mdi-information-outline"
-                    dense
-                > 
+            <v-col md="12" v-show="isShowVideo == false">
+                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
                     Sementara belum ada video
                 </v-alert>
             </v-col>
@@ -67,7 +63,7 @@ export default {
             result: "",
             isShowVideo: false,
             youtubeURL: "https://www.youtube.com/watch?v=qZXt1Aom3Cs",
-            listData : [
+            listData: [
                 {
                     youtubeURL: "qZXt1Aom3Cs"
                 },
