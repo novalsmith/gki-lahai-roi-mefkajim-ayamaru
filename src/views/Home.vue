@@ -16,7 +16,7 @@
     <Parallax />
     <v-main>
       <v-container>
-        <v-row class="my-15">
+        <v-row class="my-2">
           <v-col md="5">
             <!-- Documents -->
             <Documents />
@@ -27,8 +27,8 @@
             <Poster />
           </v-col>
         </v-row>
-        <Videos />
         <Galery />
+        <Videos />
       </v-container>
     </v-main>
 
