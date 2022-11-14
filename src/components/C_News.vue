@@ -14,7 +14,7 @@
                 Semua <v-icon> mdi-chevron-right</v-icon>
             </v-btn>
         </v-col>
-        <v-col md="4" v-show="isShowNews" v-for="item in listData">
+        <v-col md="4" v-show="isShowNews" v-for="(item, i) in listData" :key="i">
             <div>
                 <v-flex xs12>
                     <v-hover v-slot="{ hover }" open-delay="200">

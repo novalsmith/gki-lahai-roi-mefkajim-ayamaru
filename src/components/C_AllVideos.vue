@@ -8,7 +8,7 @@
 
             <v-col md="9">
                 <v-row>
-                    <v-col v-show="isShowVideo" md="6" v-for="item in listData" :color="settings.color">
+                    <v-col v-show="isShowVideo" md="6" v-for="(items,i) in listData" :color="settings.color" :key="i">
                         <v-hover v-slot="{ hover }" open-delay="200">
                             <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                                 <iframe :height="settings.defaultImageSmallContentHeight" :src="result" frameborder="0"

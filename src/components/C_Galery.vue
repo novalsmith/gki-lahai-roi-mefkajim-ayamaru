@@ -1,6 +1,6 @@
 <template>
     <v-fade-transition mode="out-in">
-        <v-row class="my-15">
+        <v-row class="my-5">
 
             <v-col md="6">
                 <h3 class="font-weight-regular">
@@ -16,7 +16,7 @@
                 </v-btn>
             </v-col>
 
-            <v-col md="4" v-show="isShowgalery" v-for="image in imagesList">
+            <v-col md="4" v-show="isShowgalery" v-for="( image, i ) in imagesList" :key="i">
                 <v-flex xs12>
                     <v-hover v-slot="{ hover }" open-delay="200">
                         <router-link :to="'/foto/album/' + image.slug" class="text-decoration-none">

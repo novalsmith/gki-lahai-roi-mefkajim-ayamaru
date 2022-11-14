@@ -6,12 +6,12 @@
       </v-text-field>
       <div v-if="this.searchValueData.length < 3">Minimal masukan 3 karakter untuk lakukan pencarian</div>
       <div v-else>
-        <div v-if="fiterData.length > 0"> {{fiterData.length}} Data ditemukan </div>
+        <div v-if="fiterData.length > 0"> {{ fiterData.length }} Data ditemukan </div>
         <div v-else>Kata kunci tidak ditemukan</div>
       </div>
     </div>
-    <v-list three-line v-if="this.searchValueData.length > 2"> 
-      <v-list-item v-for="item in fiterData" @click="resultClicked">
+    <v-list three-line v-if="this.searchValueData.length > 2">
+      <v-list-item v-for="{ item, i } in fiterData" :key="i" @click="resultClicked">
 
         <v-img :src="item.image" class="mr-4 rounded" max-width="100" min-width="100"></v-img>
 

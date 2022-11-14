@@ -15,7 +15,7 @@
                     Semua <v-icon> mdi-chevron-right</v-icon>
                 </v-btn>
             </v-col>
-            <v-col v-show="isShowVideo" md="4" v-for="item in listData" :color="settings.color">
+            <v-col v-show="isShowVideo" md="4" v-for="{ item, i } in listData" :color="settings.color" :key="i">
                 <v-hover v-slot="{ hover }" open-delay="200">
                     <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                         <iframe width="100%" :height="settings.defaultImageContentHeight" :src="result" frameborder="0"
