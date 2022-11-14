@@ -85,6 +85,11 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/Galery.vue')
   },
   {
+    path: '/pencarian',
+    name: 'Pencarian',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage.vue')
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import( /* webpackChunkName: "about" */ '../views/Notfound.vue')
   }

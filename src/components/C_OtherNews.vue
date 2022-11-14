@@ -3,9 +3,9 @@
         <v-col md="12">
             <h2 class="font-weight-regular">Lainnya</h2>
         </v-col>
-        <v-col md="4" v-for="item in listData">
+        <v-col md="4" v-for="( item, i ) in listData" :key="i">
             <v-card>
-                <router-link :to="'/informasi/detail/'+item.slugTitle">
+                <router-link :to="'/informasi/detail/' + item.slugTitle">
                     <v-img height="250" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
                 </router-link>
 
@@ -13,19 +13,19 @@
                 <v-row>
                     <v-col md="6">
                         <v-chip class="mx-5 my-5 white--text" small :color="settings.color"
-                            :to="'/informasi/kategori/'+item.slugCategory">
-                            {{item.category}}
+                            :to="'/informasi/kategori/' + item.slugCategory">
+                            {{ item.category }}
                         </v-chip>
                     </v-col>
                     <v-col md="6">
                         <v-card-subtitle class="float-right">
-                            {{item.date}}
+                            {{ item.date }}
                         </v-card-subtitle>
                     </v-col>
                 </v-row>
 
 
-                <v-card-title class="font-weight-regular">{{item.title}}</v-card-title>
+                <v-card-title class="font-weight-regular">{{ item.title }}</v-card-title>
 
             </v-card>
         </v-col>

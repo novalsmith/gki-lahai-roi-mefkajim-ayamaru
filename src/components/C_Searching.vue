@@ -1,16 +1,16 @@
 <template>
   <div>
-   
-          <v-btn icon small @click="searchingData" large class="d-flex d-sm-none d-md-none d-lg-none">
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-      
-         
-          <v-btn fab small @click="searchingData"  class="d-none d-md-block d-sm-block d-lg-block">
-            <v-icon>mdi-magnify</v-icon>
-          </v-btn>
-        
- 
+
+    <v-btn icon small @click="searchingData" large class="d-flex d-sm-none d-md-none d-lg-none">
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+
+
+    <v-btn icon small @click="searchingData" class="d-none d-md-block d-sm-block d-lg-block">
+      <v-icon>mdi-magnify</v-icon>
+    </v-btn>
+
+
     <GeneralDialog v-if="this.$store.state.settings['dialogData']['modalType'].isSearch">
       <component :is="child_component"></component>
     </GeneralDialog>

@@ -1,32 +1,6 @@
 <template>
   <v-footer padless>
     <div v-if="settings.screenSize.type.isxs || settings.screenSize.type.ismd">
-      <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-
-        <v-card>
-          <v-toolbar elevation="0">
-            <v-btn icon @click="dialog = false">
-              <v-icon>mdi-chevron-left</v-icon>
-            </v-btn>
-            <v-text-field dense rounded filled width="100%" class="ml-5 mt-7"
-              placeholder="Masukan kata yang ingin dicari disini" prepend-inner-icon="mdi-magnify">
-            </v-text-field>
-          </v-toolbar>
-          <v-list three-line>
-            <v-list-item v-for="item in items">
-
-              <v-img :src="item.image" class="mr-4 rounded" max-width="100" min-width="100"></v-img>
-
-              <v-list-item-content>
-                <span class="text-uppercase font-weight-regular text-caption" v-text="item.category"></span>
-
-                <div v-text="item.title"></div>
-              </v-list-item-content>
-            </v-list-item>
-
-          </v-list>
-        </v-card>
-      </v-dialog>
       <v-navigation-drawer v-model="drawer" fixed bottom temporary class="rounded-t-xl">
         <v-row class="my-1 mx-1">
           <v-col md="10">
@@ -105,16 +79,10 @@
           </v-icon>
         </v-btn>
 
-        <v-btn @click="searchingButton">
+        <v-btn to="/pencarian">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
 
-
-
-        <!-- <v-btn>
-<span>Nearby</span>
-<v-icon>mdi-map-marker</v-icon>
-</v-btn> -->
       </v-bottom-navigation>
     </div>
     <v-col class="text-center" cols="12">

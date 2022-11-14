@@ -30,7 +30,7 @@
 
             <v-col md="9">
                 <v-row>
-                    <v-col md="4" v-for="item in listData">
+                    <v-col md="4" v-for="(item, i) in listData" :key="i">
                         <v-hover v-slot="{ hover }" open-delay="200">
                             <router-link :to="'/agenda/detail/' + item.title" class="text-decoration-none">
                                 <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">

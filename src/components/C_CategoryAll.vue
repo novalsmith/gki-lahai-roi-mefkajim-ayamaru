@@ -1,43 +1,44 @@
 <template>
     <v-row>
         <Breadcrumbs />
-       <v-row>
-        <v-col md="3">
-            <C_CategorySection/>
-        </v-col>
+        <v-row>
+            <v-col md="3">
+                <C_CategorySection />
+            </v-col>
 
-        <v-col md="9">
-            <v-row>
+            <v-col md="9">
+                <v-row>
 
-                <v-col md="4" v-for="item in listData">
-                    <v-hover v-slot="{ hover }" open-delay="200">
-                        <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                            <router-link :to="'/informasi/detail/'+item.slugTitle">
-                                <v-img :height="settings.defaultImageSmallContentHeight" src="../assets/lahai5.jpeg"></v-img>
-                            </router-link>
-                            <v-row>
-                                <v-col md="6">
-                                    <v-chip class="mx-5 my-5 white--text" outlined small :color="settings.color"
-                                        :to="'/informasi/kategori/'+item.slugCategory">
-                                        {{item.category}}
-                                    </v-chip>
-                                </v-col>
-                                <v-col md="6">
-                                    <v-card-subtitle class="float-right">
-                                        {{item.date}}
-                                    </v-card-subtitle>
-                                </v-col>
-                            </v-row>
-                            <v-divider class="mx-5"></v-divider>
-                            <v-card-title class="font-weight-regular text-subtitle-1">{{item.title}}</v-card-title>
+                    <v-col md="4" v-for="{ item, i } in listData" :key="i">
+                        <v-hover v-slot="{ hover }" open-delay="200">
+                            <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
+                                <router-link :to="'/informasi/detail/' + item.slugTitle">
+                                    <v-img :height="settings.defaultImageSmallContentHeight"
+                                        src="../assets/lahai5.jpeg"></v-img>
+                                </router-link>
+                                <v-row>
+                                    <v-col md="6">
+                                        <v-chip class="mx-5 my-5 white--text" outlined small :color="settings.color"
+                                            :to="'/informasi/kategori/' + item.slugCategory">
+                                            {{ item.category }}
+                                        </v-chip>
+                                    </v-col>
+                                    <v-col md="6">
+                                        <v-card-subtitle class="float-right">
+                                            {{ item.date }}
+                                        </v-card-subtitle>
+                                    </v-col>
+                                </v-row>
+                                <v-divider class="mx-5"></v-divider>
+                                <v-card-title class="font-weight-regular text-subtitle-1">{{ item.title }}</v-card-title>
 
-                        </v-card>
-                    </v-hover>
+                            </v-card>
+                        </v-hover>
 
-                </v-col>
-            </v-row>
-        </v-col>
-       </v-row>
+                    </v-col>
+                </v-row>
+            </v-col>
+        </v-row>
     </v-row>
 
 </template>

@@ -46,6 +46,7 @@ import Poster from '@/components/C_Poster.vue';
 import Parallax from '@/components/C_Parallax.vue';
 import Videos from '@/components/C_Videos.vue';
 import Galery from '@/components/C_Galery.vue';
+import search from '../components/C_SearchingPage.vue'
 
 export default {
   name: 'Home',
@@ -58,7 +59,8 @@ export default {
     Poster,
     Parallax,
     Videos,
-    Galery
+    Galery,
+    search
   },
   data: () => ({
     loading: false
