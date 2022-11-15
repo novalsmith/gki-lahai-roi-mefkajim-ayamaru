@@ -1,7 +1,7 @@
  
 <template class="my-1">
   <!-- <v-carousel next-icon="mdi-chevron-right" prev-icon="mdi-chevron-left" cycle delimiter-icon="mdi-minus" -->
-  <div>
+  <!-- <div>
     <v-carousel cycle :show-arrows="false" delimiter-icon="mdi-checkbox-blank-circle-outline" class="mb-15 rounded-lg"
       :height="imageSize">
       <v-carousel-item v-for="(item, i) in items" :key="i" :src="require(`../assets/${item.img}`)">
@@ -19,8 +19,8 @@
         </v-row>
       </v-carousel-item>
     </v-carousel>
-  </div>
-  <!-- <div class="mb-5">
+  </div> -->
+  <div class="mb-5">
 
     <v-slide-group v-model="model" active-class="success" center-active>
       <v-slide-item v-for="(item, i) in items" :key="i" v-slot="{ active, toggle }">
@@ -28,7 +28,7 @@
           <v-row class="fill-height" align="center" justify="center">
 
             <v-scale-transition>
-              <v-img :src="require(`../assets/${item.img}`)" height="300" width="280" class="rounded-lg"
+              <v-img :src="require(`../assets/${item.img}`)" height="350" width="290" class="rounded-xl"
                 transition="false">
                 <v-row>
                   <v-col class="my-2 mx-2">
@@ -51,7 +51,7 @@
         </v-card>
       </v-slide-item>
     </v-slide-group>
-  </div> -->
+  </div>
 
 </template>
 <script>
