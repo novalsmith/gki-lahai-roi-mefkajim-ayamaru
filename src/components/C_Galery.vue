@@ -1,62 +1,60 @@
 <template>
-    <v-fade-transition mode="out-in">
-        <v-row class="my-5">
+    <v-row class="my-5">
 
-            <v-col md="6">
-                <h3 class="font-weight-regular">
-                    <v-icon>
-                        mdi-camera
-                    </v-icon>
-                    Album Foto
-                </h3>
-            </v-col>
-            <v-col md="6">
-                <v-btn small text :color="settings.color" class="white-text float-right" to="/media/foto">
-                    Semua <v-icon> mdi-chevron-right</v-icon>
-                </v-btn>
-            </v-col>
+        <v-col md="6">
+            <h3 class="font-weight-regular">
+                <v-icon>
+                    mdi-camera
+                </v-icon>
+                Album Foto
+            </h3>
+        </v-col>
+        <v-col md="6">
+            <v-btn small text :color="settings.color" class="white-text float-right" to="/media/foto">
+                Semua <v-icon> mdi-chevron-right</v-icon>
+            </v-btn>
+        </v-col>
 
-            <v-col md="4" v-show="isShowgalery" v-for="( image, i ) in imagesList" :key="i">
-                <v-flex xs12>
-                    <v-hover v-slot="{ hover }" open-delay="200">
-                        <router-link :to="'/foto/album/' + image.slug" class="text-decoration-none">
-                            <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
-                                <v-container fluid grid-list-lg>
-                                    <v-layout row>
-                                        <v-flex xs5>
-                                            <v-img height="120" :src="require(`../assets/${image.source}`)"
-                                                :alt="image.alt" class="grey darken-4 rounded-lg">
-                                            </v-img>
-                                        </v-flex>
-                                        <v-flex xs7>
+        <v-col md="4" v-show="isShowgalery" v-for="( image, i ) in imagesList" :key="i">
+            <v-flex xs12>
+                <v-hover v-slot="{ hover }" open-delay="200">
+                    <router-link :to="'/foto/album/' + image.slug" class="text-decoration-none">
+                        <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                            <v-container fluid grid-list-lg>
+                                <v-layout row>
+                                    <v-flex xs5>
+                                        <v-img height="120" :src="require(`../assets/${image.source}`)" :alt="image.alt"
+                                            class="grey darken-4 rounded-lg">
+                                        </v-img>
+                                    </v-flex>
+                                    <v-flex xs7>
 
 
-                                            <div class="mt-3">
-                                                <h3 class="font-weight-medium grey--text">{{ image.total }} Foto {{
-                                                        image.title
-                                                }}</h3>
-                                                <h5 class="float-left font-weight-regular my-2">
-                                                    <v-chip class="ma-2" small>
-                                                        {{ image.category }}
-                                                    </v-chip> {{ image.date }}
-                                                </h5>
-                                            </div>
-                                        </v-flex>
-                                    </v-layout>
-                                </v-container>
-                            </v-card>
-                        </router-link>
-                    </v-hover>
-                </v-flex>
-            </v-col>
-            <v-col md="12" v-show="isShowgalery == false">
-                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
-                    Sementara belum ada album foto
-                </v-alert>
-            </v-col>
+                                        <div class="mt-3">
+                                            <h3 class="font-weight-medium grey--text">{{ image.total }} Foto {{
+                                                    image.title
+                                            }}</h3>
+                                            <h5 class="float-left font-weight-regular my-2">
+                                                <v-chip class="ma-2" small>
+                                                    {{ image.category }}
+                                                </v-chip> {{ image.date }}
+                                            </h5>
+                                        </div>
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card>
+                    </router-link>
+                </v-hover>
+            </v-flex>
+        </v-col>
+        <v-col md="12" v-show="isShowgalery == false">
+            <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
+                Sementara belum ada album foto
+            </v-alert>
+        </v-col>
 
-        </v-row>
-    </v-fade-transition>
+    </v-row>
 </template>
 
 

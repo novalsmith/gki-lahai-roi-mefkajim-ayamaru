@@ -17,13 +17,13 @@
 
       <router-view />
       <v-btn v-scroll="onScroll" v-show="fab" fab fixed small bottom right :color="settings.color" @click="toTop"
-        class="mb-15" v-if="settings.screenSize.type.isxs">
+        class="mb-15 mx-5">
         <v-icon color="white">mdi-chevron-up</v-icon>
       </v-btn>
-      <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop"
+      <!-- <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop"
         class="mb-15" v-else>
         <v-icon color="white">mdi-chevron-up</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-container>
         <div v-if="loading">

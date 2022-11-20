@@ -16,17 +16,21 @@
     <Parallax />
     <v-main>
       <v-container>
-        <v-row class="my-2">
-          <v-col md="5">
-            <!-- Documents -->
-            <Documents />
-          </v-col>
+        <div v-if="settings.screenSize.type.islg">
+          <v-row>
+            <v-col md="5">
+              <Documents />
+            </v-col>
 
-          <v-col md="7">
-            <!-- Poster -->
-            <Poster />
-          </v-col>
-        </v-row>
+            <v-col md="7">
+              <Poster />
+            </v-col>
+          </v-row>
+        </div>
+        <div v-else>
+          <Documents />
+          <Poster />
+        </div>
         <Galery />
         <Videos />
       </v-container>
@@ -46,8 +50,8 @@ import Poster from '@/components/C_Poster.vue';
 import Parallax from '@/components/C_Parallax.vue';
 import Videos from '@/components/C_Videos.vue';
 import Galery from '@/components/C_Galery.vue';
-import search from '../components/C_SearchingPage.vue'
-
+// import Search from '../components/C_SearchingPage.vue'
+import { mapState } from "vuex";
 export default {
   name: 'Home',
   components: {
@@ -60,7 +64,7 @@ export default {
     Parallax,
     Videos,
     Galery,
-    search
+    // Search
   },
   data: () => ({
     loading: false
@@ -72,6 +76,9 @@ export default {
     }, 1000);
 
 
-  }
+  },
+  computed: {
+    ...mapState(['settings'])
+  },
 }
 </script>
