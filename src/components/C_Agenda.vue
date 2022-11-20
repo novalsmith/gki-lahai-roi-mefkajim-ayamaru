@@ -25,7 +25,7 @@
                                             <!-- <v-img contain src="../assets/profilemefkajim.jpg" height="120"
                                                 class="rounded-lg" transition="false">
                                             </v-img> -->
-                                            <v-img src="../assets/profilemefkajim.jpg"
+                                            <v-img src="../assets/profilemefkajim.jpg" width="300"
                                                 :height="settings.defaultImageSmallContentHeight"
                                                 class="grey darken-4 rounded-lg">
                                             </v-img>

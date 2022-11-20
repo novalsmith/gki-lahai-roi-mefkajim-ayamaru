@@ -23,8 +23,9 @@
                             <v-container fluid grid-list-lg>
                                 <v-layout row>
                                     <v-flex xs5>
-                                        <v-img height="120" :src="require(`../assets/${image.source}`)" :alt="image.alt"
-                                            class="grey darken-4 rounded-lg">
+                                        <v-img :height="settings.defaultImageSmallContentHeight"
+                                            :src="require(`../assets/${image.source}`)" :alt="image.alt"
+                                            class="grey darken-4 rounded-lg" width="300">
                                         </v-img>
                                     </v-flex>
                                     <v-flex xs7>
