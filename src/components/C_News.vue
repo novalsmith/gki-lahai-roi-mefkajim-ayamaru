@@ -25,8 +25,7 @@
                                         <v-flex xs5>
 
                                             <v-img src="../assets/lahai5.jpeg"
-                                                :height="settings.defaultImageSmallContentHeight" class="rounded-lg"
-                                                transition="false">
+                                                :height="settings.defaultImageSmallContentHeight" class="rounded-lg">
                                             </v-img>
                                         </v-flex>
                                         <v-flex xs7>

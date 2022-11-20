@@ -4,7 +4,7 @@
       <!-- <Breadcrumbs v-if="settings.screenSize.type.isxs || settings.screenSize.type.ismd" v-show="false" /> -->
       <Breadcrumbs />
       <!-- <v-card> -->
-      <v-img src="../assets/lahai2.jpeg" class="white--text align-end rounded-xl"
+      <v-img src="../assets/lahai2.jpeg" class="white--text align-end rounded-lg"
         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
         <v-card-title>
           Ibadah Perayaan Natal 25 Desember diadakan serentak se-papua barat di GKI

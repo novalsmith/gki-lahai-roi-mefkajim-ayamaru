@@ -18,7 +18,7 @@
       </v-text-field>
     </v-toolbar>
     <v-list three-line color="primary">
-      <v-list-item v-for="item in items">
+      <v-list-item v-for="(item, i) in items" :key="i">
 
         <v-img :src="item.image" class="mr-4 rounded" max-width="100" min-width="100"></v-img>
 
