@@ -1,45 +1,59 @@
 <template>
-    <v-row>
-        <Breadcrumbs />
-        <v-row>
-            <v-col md="3">
-                <C_CategorySection />
+    <v-container>
+        <v-row class="mb-5">
+
+            <v-col cols="2">
+                <!-- <Breadcrumbs /> -->
+                <h4>Kategori</h4>
             </v-col>
+            <v-col cols="10">
+                <C_CategorySection /> 
+            </v-col>
+        </v-row> 
 
-            <v-col md="9">
-                <v-row>
+        <v-row>
 
-                    <v-col md="4" v-for="{ item, i } in listData" :key="i">
+            <v-col md="4" v-for="item in listCategoriesData">
+                <div>
+                    <v-flex xs12>
                         <v-hover v-slot="{ hover }" open-delay="200">
-                            <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                                <router-link :to="'/informasi/detail/' + item.slugTitle">
-                                    <v-img :height="settings.defaultImageSmallContentHeight"
-                                        src="../assets/lahai5.jpeg"></v-img>
-                                </router-link>
-                                <v-row>
-                                    <v-col md="6">
-                                        <v-chip class="mx-5 my-5 white--text" outlined small :color="settings.color"
-                                            :to="'/informasi/kategori/' + item.slugCategory">
-                                            {{ item.category }}
-                                        </v-chip>
-                                    </v-col>
-                                    <v-col md="6">
-                                        <v-card-subtitle class="float-right">
-                                            {{ item.date }}
-                                        </v-card-subtitle>
-                                    </v-col>
-                                </v-row>
-                                <v-divider class="mx-5"></v-divider>
-                                <v-card-title class="font-weight-regular text-subtitle-1">{{ item.title }}</v-card-title>
+                            <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                                <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                                    <v-container fluid grid-list-lg>
+                                        <v-layout row>
+                                            <v-flex xs5>
 
-                            </v-card>
+                                                <v-img src="../assets/lahai5.jpeg" width="300"
+                                                    :height="settings.defaultImageSmallContentHeight"
+                                                    class="rounded-lg">
+                                                </v-img>
+                                            </v-flex>
+                                            <v-flex xs7>
+                                                <div>
+                                                    <div class="subheading font-weight-medium">
+                                                        {{ item.title }}
+                                                    </div>
+                                                    <h5 class="float-left font-weight-regular my-2">
+                                                        <v-chip class="ma-2" small>
+                                                            {{ item.category }}
+                                                        </v-chip> {{ item.date }}
+                                                    </h5>
+                                                </div>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-container>
+                                </v-card>
+                            </router-link>
                         </v-hover>
+                    </v-flex>
+                </div>
 
-                    </v-col>
-                </v-row>
             </v-col>
         </v-row>
-    </v-row>
+    </v-container>
+
+
+
 
 </template>
 
@@ -47,6 +61,7 @@
 import News from '@/components/C_News.vue';
 import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
 import C_CategorySection from '@/components/C_CategorySection.vue';
+import C_Parallax from '@/components/C_Parallax.vue';
 
 import { mapState } from "vuex";
 export default {
@@ -60,49 +75,62 @@ export default {
             { text: 'Sidang Klasis', icon: 'mdi-flag', total: 3, slug: "sidang-klasis" },
             { text: 'Oukumene', icon: 'mdi-flag', total: 7, slug: "oukumene" },
         ],
-        listData: [
+        listCategoriesData: [
             {
                 id: "23453",
                 category: "PKB",
+                slugCategory: "pkb",
+                slugTitle: "ibadah-natal-2021",
                 title: "Ibadah Natal 2021",
-                date: "25 Des 2021"
+                date: "5 Menit yang lalu"
             },
             {
                 id: "2366",
                 category: "PW",
+                slugCategory: "pw",
+                slugTitle: "ibadah-natal-2021",
                 title: "Pesparawi Nasional diadakan di maybrat",
-                date: "25 Sep 2022"
+                date: "8 jam yang lalu"
             },
             {
                 id: "2553",
                 category: "Jemaat",
+                slugCategory: "jemaat",
+                slugTitle: "ibadah-natal-2021",
                 title: "Peresmian Gedung Gereja Cabang di Maybrat",
                 date: "25 Sep 2022"
             },
             {
                 id: "23499",
                 category: "Natal",
+                slugCategory: "natal",
+                slugTitle: "ibadah-natal-2021",
                 title: "Sidang Klasis di Maybrat",
                 date: "25 Sep 2022"
             },
             {
                 id: "2888",
                 category: "Natal",
+                slugCategory: "sidang-klasis",
+                slugTitle: "sidang-klasis-di-maybrat",
                 title: "Sidang Klasis di Maybrat",
-                date: "25 Des 2022"
+                date: "25 Sep 2022"
             },
             {
                 id: "2345",
                 category: "Natal",
+                slugCategory: "natal",
+                slugTitle: "ibadah-natal-2021",
                 title: "Sidang Klasis di Maybrat",
-                date: "25 Apr 2022"
+                date: "25 Sep 2022"
             }
         ]
     }),
     components: {
         News,
         Breadcrumbs,
-        C_CategorySection
+        C_CategorySection,
+        C_Parallax
     },
     computed: {
         ...mapState(['settings'])

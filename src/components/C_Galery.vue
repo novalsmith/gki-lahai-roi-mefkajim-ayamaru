@@ -25,7 +25,15 @@
                                     <v-flex xs5>
                                         <v-img :height="settings.defaultImageSmallContentHeight"
                                             :src="require(`../assets/${image.source}`)" :alt="image.alt"
-                                            class="grey darken-4 rounded-lg" width="300">
+                                            :lazy-src="require(`../assets/${image.source}`)"
+                                            class="grey darken-4 rounded-lg"
+                                            :width="settings.defaultImageSmallContentWidth">
+                                            <template v-slot:placeholder>
+                                                <v-row class="fill-height ma-0" align="center" justify="center">
+                                                    <v-progress-circular indeterminate color="grey lighten-5">
+                                                    </v-progress-circular>
+                                                </v-row>
+                                            </template>
                                         </v-img>
                                     </v-flex>
                                     <v-flex xs7>

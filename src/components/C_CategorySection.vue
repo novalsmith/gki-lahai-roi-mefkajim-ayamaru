@@ -1,5 +1,18 @@
 <template>
-    <v-card class="mx-auto rounded-lg">
+    <!-- <v-col cols="12"> -->
+    <v-sheet class="mx-auto">
+        <v-slide-group show-arrows next-icon="mdi-arrow-right-thin-circle-outline"
+            prev-icon="mdi-arrow-left-thin-circle-outline">
+            <v-slide-item v-for="n in items" :key="n" v-slot="{ active, toggle }">
+                <v-btn class="mx-2" :input-value="active" :active-class="('white--text ' + settings.color)" depressed
+                    rounded @click="toggle">
+                    {{ n.text }}
+                </v-btn>
+            </v-slide-item>
+        </v-slide-group>
+    </v-sheet>
+    <!-- </v-col> -->
+    <!-- <v-card class="mx-auto rounded-lg">
         <v-list>
             <v-subheader>Kategori</v-subheader>
             <v-list-item-group v-model="selectedItem" :color="settings.color">
@@ -14,7 +27,7 @@
                 </v-list-item>
             </v-list-item-group>
         </v-list>
-    </v-card>
+    </v-card> -->
 </template>
 
 <script>
@@ -24,6 +37,7 @@ import { mapState } from "vuex";
 export default {
     data: () => ({
         selectedItem: 0,
+        model: null,
         items: [
             { text: 'Natal', icon: 'mdi-clock', total: 5, slug: "natal" },
             { text: 'Jemaat', icon: 'mdi-account', total: 10, slug: "jemaat" },
@@ -31,6 +45,9 @@ export default {
             { text: 'PW', icon: 'mdi-flag', total: 12, slug: "pw" },
             { text: 'Sidang Klasis', icon: 'mdi-flag', total: 3, slug: "sidang-klasis" },
             { text: 'Oukumene', icon: 'mdi-flag', total: 7, slug: "oukumene" },
+            { text: 'PKB', icon: 'mdi-flag', total: 7, slug: "oukumene" },
+            { text: 'Sidang Jemaat Allah', icon: 'mdi-flag', total: 7, slug: "oukumene" },
+            { text: 'Pemuda', icon: 'mdi-flag', total: 7, slug: "oukumene" },
         ]
     }),
     components: {

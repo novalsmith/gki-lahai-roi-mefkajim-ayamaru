@@ -1,10 +1,7 @@
 <template>
-  <v-main v-if="loading">
-    <v-container>
-      <v-skeleton-loader type="image, article"></v-skeleton-loader>
-    </v-container>
-  </v-main>
-  <div v-else>
+
+
+  <div>
     <v-main>
       <v-container>
         <Carausel />
@@ -35,8 +32,9 @@
         <Videos />
       </v-container>
     </v-main>
-
   </div>
+
+
 </template>
 
 <script>

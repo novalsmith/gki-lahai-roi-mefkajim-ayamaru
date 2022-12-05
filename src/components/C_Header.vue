@@ -64,7 +64,7 @@
 
                         </v-col>
                         <v-col md="9" class="text-right">
-                            <v-btn :small="styleData.small" :rounded="styleData.rounded" v-for="link in menu.right"
+                            <v-btn :small="styleData.small" :rounded="styleData.rounded" v-for="link in menu.right" :active-class="('white--text ' + settings.color)"
                                 :key="link.name" :to="link.path" text class="my-4" :outlined="link.outlined">
 
                                 <v-menu v-if="link.submenu != undefined" open-on-hover bottom offset-y

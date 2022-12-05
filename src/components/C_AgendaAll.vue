@@ -1,75 +1,70 @@
 <template>
-    <v-row>
-        <Breadcrumbs />
+    <v-container>
+        <v-row class="mb-5">
 
-        <v-row>
-            <v-col md="3">
-                <v-card class="mx-auto rounded-lg mb-10">
-                    <v-list>
-                        <v-subheader>Agenda</v-subheader>
-                        <v-list-item-group v-model="selectedItem" :color="settings.color">
-                            <v-list-item v-for="(item, i) in items" :key="i">
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="item.text"></v-list-item-title>
-                                </v-list-item-content>
-
-                                <v-chip class="mx-5 my-5 white--text" circle small :color="settings.color">
-                                    {{ item.total }}
-                                </v-chip>
-
-
-                            </v-list-item>
-                        </v-list-item-group>
-                    </v-list>
-                </v-card>
-                <!-- Category Section -->
-
-                <C_CategorySection />
-
+            <v-col cols="2">
+                <!-- <Breadcrumbs /> -->
+                <h4>Kategori</h4>
             </v-col>
-
-            <v-col md="9">
-                <v-row>
-                    <v-col md="4" v-for="(item, i) in listData" :key="i">
-                        <v-hover v-slot="{ hover }" open-delay="200">
-                            <router-link :to="'/agenda/detail/' + item.title" class="text-decoration-none">
-                                <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                                    <v-img class="white--text align-end"
-                                        :height="settings.defaultImageSmallContentHeight"
-                                        src="../assets/profilemefkajim.jpg">
-                                        <v-chip :color="settings.color" class="mx-5 my-5 white--text">
-                                            <v-icon class="mx-1">
-                                                mdi-bell
-                                            </v-icon> {{ item.date }}
-                                        </v-chip>
-                                    </v-img>
-
-                                    <v-row>
-                                        <v-col md="6">
-                                            <v-chip class="mx-5 my-5 white--text"
-                                                :outlined="settings.outlinedGeneralButton" small
-                                                :color="settings.color">
-                                                Sidang Klasis
-                                            </v-chip>
-                                        </v-col>
-                                        <v-col md="6">
-                                            <v-card-subtitle class="float-right">
-                                                {{ item.date }}
-                                            </v-card-subtitle>
-                                        </v-col>
-
-                                    </v-row>
-                                    <v-divider class="mx-5"></v-divider>
-                                    <v-card-title class="font-weight-regular">{{ item.title }}</v-card-title>
-                                </v-card>
-                            </router-link>
-
-                        </v-hover>
-                    </v-col>
-                </v-row>
+            <v-col cols="10">
+                <C_CategorySection />
             </v-col>
         </v-row>
-    </v-row>
+
+
+        <v-row>
+            <v-col md="4" v-for="(item, i) in listData" :key="i">
+                <div>
+                    <v-flex xs12>
+                        <v-hover v-slot="{ hover }" open-delay="200">
+                            <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                                <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
+                                    <v-container fluid grid-list-lg>
+                                        <v-layout row>
+                                            <v-flex xs5>
+                                                <v-img src="../assets/profilemefkajim.jpg"
+                                                    :width="settings.defaultImageSmallContentWidth"
+                                                    :height="settings.defaultImageSmallContentHeight"
+                                                    lazy-src="../assets/profilemefkajim.jpg"
+                                                    class="grey darken-4 rounded-lg">
+                                                    <template v-slot:placeholder>
+                                                        <v-row class="fill-height ma-0" align="center" justify="center">
+                                                            <v-progress-circular indeterminate color="grey lighten-5">
+                                                            </v-progress-circular>
+                                                        </v-row>
+                                                    </template>
+                                                </v-img>
+                                            </v-flex>
+                                            <v-flex xs7>
+                                                <div>
+
+                                                    <h2 class="font-weight-medium grey--text">
+                                                        <v-icon class="grey--text">
+                                                            mdi-bell
+                                                        </v-icon> {{ item.date }}
+                                                    </h2>
+
+                                                </div>
+                                                <div class="subheading font-weight-medium mt-1">
+                                                    {{ item.title }}
+                                                </div>
+                                                <h5 class="float-left font-weight-regular my-2">
+                                                    <v-chip class="ma-2" small>
+                                                        {{ item.category }}
+                                                    </v-chip> {{ item.datePublish }}
+                                                </h5>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-container>
+                                </v-card>
+                            </router-link>
+                        </v-hover>
+                    </v-flex>
+                </div>
+            </v-col>
+        </v-row>
+
+    </v-container>
 
 </template>
 
@@ -93,27 +88,27 @@ export default {
         listData: [
             {
                 title: "Ibadah Natal 2021",
-                date: "25 Des 2021"
+                category: "PKB",
+                date: "25 Des 2021",
+                datePublish: "16 Des 2021"
             },
             {
                 title: "Pesparawi Nasional diadakan di maybrat",
-                date: "25 Sep 2022"
+                category: "Pesparawi",
+                date: "25 Sep 2022",
+                datePublish: "16 Des 2021"
             },
             {
                 title: "Peresmian Gedung Gereja Cabang di Maybrat",
-                date: "25 Sep 2022"
+                category: "Peresmian",
+                date: "14 Nov 2022",
+                datePublish: "16 Des 2021"
             },
             {
                 title: "Sidang Klasis di Maybrat",
-                date: "25 Sep 2022"
-            },
-            {
-                title: "Peresmian Gedung Gereja Cabang di Maybrat",
-                date: "25 Mar 2022"
-            },
-            {
-                title: "Sidang Klasis di Maybrat",
-                date: "25 Apr 2022"
+                category: "Sidang Klasis",
+                date: "02 Jan 2022",
+                datePublish: "16 Des 2021"
             }
         ]
     }),
