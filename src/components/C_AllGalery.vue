@@ -1,62 +1,65 @@
 <template>
-    <v-row>
-        <Breadcrumbs />
-        <v-row>
-            <v-col md="3">
-                <v-card class="mx-auto rounded-lg">
-                    <v-list>
-                        <v-subheader>Album</v-subheader>
-                        <v-list-item-group v-model="selectedItem" :color="settings.color">
-                            <v-list-item v-for="(item, i) in items" :key="i">
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="item.text"></v-list-item-title>
-                                </v-list-item-content>
+    <v-container>
+        <v-row class="mb-5">
 
-                                <v-chip class="mx-5 my-5 white--text" circle small :color="settings.color">
-                                    {{ item.total }}
-                                </v-chip>
-                            </v-list-item>
-                        </v-list-item-group>
-                    </v-list>
-                </v-card>
+            <v-col cols="2">
+                <!-- <Breadcrumbs /> -->
+                <h4>Kategori</h4>
             </v-col>
-
-            <v-col md="9">
-                <v-row>
-                    <v-col md="4" v-show="isShowgalery" v-for="image in imagesList" :key="image.alt">
-                        <v-hover v-slot="{ hover }" open-delay="200">
-                            <a href="javascript:void(0)" @click="openImage(image)">
-                                <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                                    <v-img :height="settings.defaultImageSmallContentHeight"
-                                        :src="require(`../assets/${image.source}`)" :alt="image.alt"
-                                        class="grey darken-4"></v-img>
-                                    <v-row>
-                                        <v-col md="10" offset-md="2">
-                                            <v-card-subtitle class="float-right">
-                                                25 Sep 2022
-                                            </v-card-subtitle>
-                                        </v-col>
-                                    </v-row>
-                                    <v-divider class="mx-5"></v-divider>
-                                    <v-card-title class="font-weight-regular">{{ image.title }}</v-card-title>
-                                </v-card>
-                            </a>
-                        </v-hover>
-                    </v-col>
-                    <v-col md="12" v-show="isShowgalery == false">
-                        <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
-                            Sementara belum ada album foto
-                        </v-alert>
-                    </v-col>
-                </v-row>
+            <v-col cols="10">
+                <C_CategorySection />
             </v-col>
         </v-row>
+
+
+        <v-row>
+            <v-col md="4" v-show="isShowgalery" v-for="( image, i ) in imagesList" :key="i">
+                <v-flex xs12>
+                    <v-hover v-slot="{ hover }" open-delay="200">
+                        <a href="javascript:void(0)" @click="openImage(image)">
+                            <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                                <v-container fluid grid-list-lg>
+                                    <v-layout row>
+                                        <v-img :height="settings.defaultImageSmallContentHeight"
+                                            :src="require(`../assets/${image.source}`)" :alt="image.alt"
+                                            :lazy-src="require(`../assets/${image.source}`)"
+                                            class="grey darken-4 rounded-lg"
+                                            :width="settings.defaultImageSmallContentWidth">
+                                            <template v-slot:placeholder>
+                                                <v-row class="fill-height ma-0" align="center" justify="center">
+                                                    <v-progress-circular indeterminate color="grey lighten-5">
+                                                    </v-progress-circular>
+                                                </v-row>
+                                            </template>
+                                        </v-img>
+                                        <div>
+                                            <h5 class="float-left font-weight-regular my-2">
+                                                <v-chip class="ma-2" small>
+                                                    {{ image.category }}
+                                                </v-chip> {{ image.date }}
+                                            </h5>
+                                        </div>
+                                    </v-layout>
+                                </v-container>
+                            </v-card>
+                        </a>
+                    </v-hover>
+                </v-flex>
+            </v-col>
+            <v-col md="12" v-show="isShowgalery == false">
+                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
+                    Sementara belum ada album foto
+                </v-alert>
+            </v-col>
+
+        </v-row>
+
 
         <GeneralDialog v-if="this.$store.state.settings['dialogData']['modalType'].isGalery">
             <component :is="child_component"></component>
         </GeneralDialog>
 
-    </v-row>
+    </v-container>
 
 </template>
 
@@ -86,12 +89,12 @@ export default {
             { text: 'Oukumene', icon: 'mdi-flag', total: 7, slug: "oukumene" },
         ],
         imagesList: [
-            { source: "lahai1.jpeg", alt: "asd1", title: "Ibadah Perayaan Natal 2021" },
-            { source: "lahai2.jpeg", alt: "sds2", title: "Ibadah Perayaan Natal 2022" },
-            { source: "lahai3.jpeg", alt: "asdf3", title: "Ibadah Perayaan Natal 2023" },
-            { source: "lahai4.jpeg", alt: "asdf4", title: "Ibadah Perayaan Natal 2024" },
-            { source: "lahai5.jpeg", alt: "asdf5", title: "Ibadah Perayaan Natal 2025" },
-            { source: "lahai6.jpeg", alt: "asdf6", title: "Ibadah Perayaan Natal 2026" }
+            { source: "lahai1.jpeg", category: "Pesparawi", title: "Natal", total: 15, date: "25 Sept 2022", slug: "natal" },
+            { source: "lahai2.jpeg", category: "KKR", title: "Sidang Klasis 2022", total: 23, date: "15 Sept 2022", slug: "sidang-klasis" },
+            { source: "lahai3.jpeg", category: "Oukumene", title: "Natal", total: 50, date: "6 Agus 2022", slug: "natal" },
+            { source: "lahai4.jpeg", category: "Mefkajim", title: "PKB", total: 14, date: "25 Des 2022", slug: "pkb" },
+            { source: "lahai5.jpeg", category: "Sidang Klasis", title: "PW", total: 20, date: "2 Sept 2022", slug: "pw" },
+            { source: "lahai6.jpeg", category: "Natal", title: "Pesparawi", total: 15, date: "8 Sept 2022", slug: "pesparawi" }
         ]
     }),
     components: {

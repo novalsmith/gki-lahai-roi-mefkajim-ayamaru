@@ -58,15 +58,7 @@
                     :key="i">
                     <v-hover v-slot="{ hover }" open-delay="200">
                         <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                            <!-- <iframe width="100%" :height="settings.defaultImageContentHeight" :src="result" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <video-embed css="embed-responsive-1by1" src="https://www.youtube.com/watch?v=s4ObxcdXoFE"
-                                ref="youtube">
-                            </video-embed> -->
-
                             <LazyYoutube width="100%" src="https://www.youtube.com/watch?v=TcMBFSGVi1c" />
-
                             <v-row>
                                 <v-col md="6">
                                     <v-chip class="mx-5 my-5 white--text" :outlined="settings.outlinedGeneralButton"
