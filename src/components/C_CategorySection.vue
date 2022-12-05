@@ -5,7 +5,7 @@
             prev-icon="mdi-arrow-left-thin-circle-outline">
             <v-slide-item v-for="n in items" :key="n" v-slot="{ active, toggle }">
                 <v-btn class="mx-2" :input-value="active" :active-class="('white--text ' + settings.color)" depressed
-                    rounded @click="toggle">
+                    rounded @click="toggle" small>
                     {{ n.text }}
                 </v-btn>
             </v-slide-item>
