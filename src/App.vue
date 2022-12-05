@@ -6,18 +6,13 @@
     </v-system-bar>
     <!-- is acctive web for maintenance info or welcoming page -->
     <div v-if="isActiveWeb">
-      <v-container>
-        <div v-if="loading">
-          <v-skeleton-loader type="list-item-avatar-three-line"></v-skeleton-loader>
-        </div>
-        <div v-else>
-          <C_Header />
-        </div>
+      <v-container> 
+          <C_Header /> 
       </v-container>
 
       <router-view />
       <v-btn v-scroll="onScroll" v-show="fab" fab fixed small bottom right :color="settings.color" @click="toTop"
-        class="mb-15 mx-5">
+        class="mb-15">
         <v-icon color="white">mdi-chevron-up</v-icon>
       </v-btn>
       <!-- <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop"

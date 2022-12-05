@@ -1,7 +1,51 @@
 <template>
   <div>
+    <div v-if="!settings.screenSize.type.islg">
+      <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
+        <v-row class="my-1 mx-1">
+          <v-col md="10">
+            <span>Kategori</span>
+          </v-col>
+          <v-col md="2" class="text-right">
+            <v-btn icon @click.stop="drawer = false" :color="settings.color">
+              <v-icon>
+                mdi-close
+              </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-divider></v-divider>
+        <v-list nav dense>
+          <v-list-item-group v-model="group" :active-class="settings.color" class="white--text">
+            <v-list-item v-for="(val, key) in categories" :key="key">
+              <v-list-item-title>{{ val.text }}</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+      <v-bottom-navigation fixed :color="settings.color" height="60">
+        <v-btn to="/">
+          <!-- <span>Home</span> -->
+          <v-icon>mdi-home</v-icon>
+        </v-btn>
+        <v-btn @click.stop="drawer = !drawer">
+          <!-- <span>Menu</span> -->
+          <v-icon>mdi-menu</v-icon>
+        </v-btn>
+        <v-btn>
+          <v-icon>
+            mdi-newspaper-variant-multiple
+          </v-icon>
+        </v-btn>
+
+        <v-btn to="/pencarian">
+          <v-icon>mdi-magnify</v-icon>
+        </v-btn>
+
+      </v-bottom-navigation>
+    </div>
     <v-container>
-      <v-btn text>
+      <v-btn text @click.stop="drawer = !drawer">
         <v-icon>mdi-menu</v-icon>
         <span class="text-h7 mx-2">Kategori</span>
       </v-btn>
@@ -47,6 +91,14 @@ export default {
     notifications: false,
     sound: true,
     widgets: false,
+    categories: [
+      { text: 'Natal', icon: 'mdi-clock', total: 5, slug: "natal" },
+      { text: 'Jemaat', icon: 'mdi-account', total: 10, slug: "jemaat" },
+      { text: 'PESPARAWI', icon: 'mdi-flag', total: 10, slug: "pesparawi" },
+      { text: 'PW', icon: 'mdi-flag', total: 12, slug: "pw" },
+      { text: 'Sidang Klasis', icon: 'mdi-flag', total: 3, slug: "sidang-klasis" },
+      { text: 'Oukumene', icon: 'mdi-flag', total: 7, slug: "oukumene" },
+    ],
     items: [
       {
         image: 'https://cdn-images-1.medium.com/max/1024/1*9C9hLji68wV373tk8okLYA.jpeg',

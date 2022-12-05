@@ -1,7 +1,7 @@
 <template>
   <v-footer padless>
-    <div v-if="settings.screenSize.type.isxs || settings.screenSize.type.ismd">
-      <v-navigation-drawer v-model="drawer" fixed bottom temporary class="rounded-t-xl">
+    <div v-if="!settings.screenSize.type.islg">
+      <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
         <v-row class="my-1 mx-1">
           <v-col md="10">
             <span>Menu</span>

@@ -21,13 +21,18 @@
                             <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                                 <v-container fluid grid-list-lg>
                                     <v-layout row>
-                                        <v-flex xs5>
-                                            <!-- <v-img contain src="../assets/profilemefkajim.jpg" height="120"
-                                                class="rounded-lg" transition="false">
-                                            </v-img> -->
-                                            <v-img src="../assets/profilemefkajim.jpg" width="300"
+                                        <v-flex xs5> 
+                                            <v-img src="../assets/profilemefkajim.jpg"
+                                                :width="settings.defaultImageSmallContentWidth"
                                                 :height="settings.defaultImageSmallContentHeight"
+                                                lazy-src="../assets/profilemefkajim.jpg"
                                                 class="grey darken-4 rounded-lg">
+                                                <template v-slot:placeholder>
+                                                    <v-row class="fill-height ma-0" align="center" justify="center">
+                                                        <v-progress-circular indeterminate color="grey lighten-5">
+                                                        </v-progress-circular>
+                                                    </v-row>
+                                                </template>
                                             </v-img>
                                         </v-flex>
                                         <v-flex xs7>
