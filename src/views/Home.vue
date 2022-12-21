@@ -11,9 +11,9 @@
       </v-container>
     </v-main>
     <Parallax />
-    <v-main>
+    <v-main class="mt-15">
       <v-container>
-        <div v-if="settings.screenSize.type.islg">
+        <!-- <div v-if="settings.screenSize.type.islg">
           <v-row>
             <v-col md="5">
               <Documents />
@@ -24,10 +24,11 @@
             </v-col>
           </v-row>
         </div>
-        <div v-else>
-          <Documents />
+        <div v-else> -->
           <Poster />
-        </div>
+          <Documents />
+        
+        <!-- </div> -->
         <Galery />
         <Videos />
       </v-container>

@@ -1,157 +1,145 @@
 <template>
-    <div>
-      <v-row>
-        <Breadcrumbs/>  
-        <v-col md="10" offset-md="1">
-        </v-col>
-        <v-col md="8" offset-md="2"> 
-            <v-card>
-        <v-toolbar :color="settings.color" class="white--text">
-            <v-app-bar-nav-icon class="white--text">
-                <v-icon>
-                    mdi-file
-                </v-icon>
-            </v-app-bar-nav-icon>
+  <v-container>
+    <v-row class="mb-5">
 
-            <v-toolbar-title>Dokumen</v-toolbar-title> 
-            <v-spacer></v-spacer>
-            <v-text-field class="pt-5" solo dense rounded placeholder="Masukan kata yang ingin dicari disini"
-                    prepend-inner-icon="mdi-magnify">
-                </v-text-field>
-        </v-toolbar>
+      <v-col cols="2">
+        <h4>Kategori</h4>
+      </v-col>
+      <v-col cols="10">
+        <C_CategorySection />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col md="4" v-for="image in listDocuments">
+        <v-flex xs12>
+          <router-link :to="'/informasi/detail/' + image.subtitle" class="text-decoration-none">
+            <v-hover v-slot="{ hover }" open-delay="200">
 
-        <v-list v-show="isShowDocument" three-line>
-            <template v-for="(item, index) in listDocuments">
-                <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader>
-                <v-divider v-else-if="item.divider" :key="index" :inset="item.inset"></v-divider>
-                <v-list-item v-else :key="item.title">
-                    <v-list-item-avatar>
-                        <v-icon>mdi-folder</v-icon>
-                    </v-list-item-avatar>
+              <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                <v-container fluid grid-list-lg>
+                  <v-layout row>
+                    <v-img :height="settings.defaultImageSmallContentHeight" src="../assets/lahai5.jpeg"
+                      :alt="image.title" lazy-src="../assets/lahai5.jpeg" class="grey darken-4 rounded-lg"
+                      :width="settings.defaultImageSmallContentWidth">
+                      <template v-slot:placeholder>
+                        <v-row class="fill-height ma-0" align="center" justify="center">
+                          <v-progress-circular indeterminate color="grey lighten-5">
+                          </v-progress-circular>
+                        </v-row>
+                      </template>
+                    </v-img>
 
-                    <v-list-item-content>
-                        <v-list-item-title v-html="item.title"></v-list-item-title>
-                        <v-list-item-subtitle v-html="item.subtitle"></v-list-item-subtitle>
-                    </v-list-item-content>
- 
-                    <v-tooltip bottom>
-                        <template v-slot:activator="{ on, attrs }">
-                            <div v-on="on" v-bind="attrs">
-                                <v-btn fab small :color="settings.color" outlined>
-                                    <v-icon>mdi-download</v-icon>
-                                </v-btn>
-                            </div>
-                        </template>
-                        <span>Download</span>
-                    </v-tooltip>  
+                    <div>
+                      <div class="subheading font-weight-medium mt-3 ml-3">
+                        <p v-html="image.title"></p>
+                      </div>
+                      <h5 class="float-left font-weight-regular my-2">
+                        <v-chip class="ma-2" small>
+                          <v-icon> mdi-download </v-icon> Download
+                        </v-chip> 20 Des 2022
+                      </h5>
+                    </div>
+                  </v-layout>
+                </v-container>
+              </v-card>
 
-                </v-list-item>
-            </template>
-        </v-list>
-       
-        <v-list v-show="isShowDocument==false">
-            <v-list-item>
-                <v-list-item-content>
-                        <v-list-item-title>
-                            <v-alert 
-                                :color="settings.color+' lighten-5'"
-                                icon="mdi-information-outline"
-                                dense
-                                > 
-                                    Sementara belum ada album foto
-                            </v-alert> 
-                        </v-list-item-title>
-                      
-                    </v-list-item-content>
-            </v-list-item>
-        </v-list>
-    </v-card>
-        </v-col> 
-      </v-row>
-    </div>
+            </v-hover>
+          </router-link>
+        </v-flex>
+      </v-col>
+      <v-col md="12" v-show="isShowDocument == false">
+        <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
+          Sementara belum ada informasi
+        </v-alert>
+      </v-col>
+
+    </v-row>
+  </v-container>
 </template>
   
-  <script>
-  import { mapState } from "vuex";
-  import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
-  import OtherNews from '@/components/C_OtherNews.vue';
-  export default {
-    name: "Video",
-    computed: {
-      ...mapState(['settings'])
-    },
-    data() {
-      return {
-        isShowDocument:false,
-        listDocuments: [
-            { header: 'Silahkan Download Dokumen Dibawah ini' },
-            {
-                avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-                title: 'Brunch this weekend?',
-                subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
-            },
-            { divider: true, inset: true },
-            {
-                avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-                title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-                subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
-            },
-            { divider: true, inset: true },
-            {
-                avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-                title: 'Oui oui',
-                subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
-            },
-            { divider: true, inset: true },
-            {
-                avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-                title: 'Birthday gift',
-                subtitle: '<span class="text--primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
-            },
-            { divider: true, inset: true },
-            {
-                avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-                title: 'Recipe to try',
-                subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
-            },
-        ],
-        data: []
-      }
-    },
-    components: {
-      Breadcrumbs,
-      OtherNews
-    },
-    methods: {
-      setBreadcrumsData() {
-        const datas = {
-          type: "informasi",
-          items: [
-            {
-              text: 'Beranda',
-              disabled: false,
-              href: '/',
-              color: "#42A5F5"
-            }, 
-            {
-              text: 'Dokumen',
-              disabled: true,
-              href: 'breadcrumbs_link_2',
-              color: "#BDBDBD"
-            },
-          ],
-  
-        }
-        this.$store.dispatch('breadcrumData', datas);
-        console.log(this.$route.params) // outputs 'yay'
-  
-      }
-    },
-    created() {
-      this.setBreadcrumsData();
-    },
-    mounted(){
-        this.isShowDocument = this.listDocuments.length > 0 ? true : false; 
+<script>
+import { mapState } from "vuex";
+import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
+import OtherNews from '@/components/C_OtherNews.vue';
+import C_CategorySection from '@/components/C_CategorySection.vue';
+export default {
+  name: "Video",
+  computed: {
+    ...mapState(['settings'])
+  },
+  data() {
+    return {
+      isShowDocument: false,
+      listDocuments: [
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+          title: 'Laporan Keuangan 1',
+          subtitle: `<span class="text--primary">Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?`,
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+          title: 'Laporan Keuangan 2',
+          subtitle: `<span class="text--primary">to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend.`,
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          title: 'Laporan Keuangan 3',
+          subtitle: '<span class="text--primary">Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?',
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
+          title: 'Laporan Keuangan 4',
+          subtitle: '<span class="text--primary">Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?',
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
+          title: 'Laporan Keuangan 5',
+          subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+        },
+        {
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
+          title: 'Laporan Keuangan 6',
+          subtitle: '<span class="text--primary">Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos.',
+        },
+      ],
+      data: []
     }
+  },
+  components: {
+    Breadcrumbs,
+    OtherNews,
+    C_CategorySection
+  },
+  methods: {
+    setBreadcrumsData() {
+      const datas = {
+        type: "informasi",
+        items: [
+          {
+            text: 'Beranda',
+            disabled: false,
+            href: '/',
+            color: "#42A5F5"
+          },
+          {
+            text: 'Dokumen',
+            disabled: true,
+            href: 'breadcrumbs_link_2',
+            color: "#BDBDBD"
+          },
+        ],
+
+      }
+      this.$store.dispatch('breadcrumData', datas);
+      console.log(this.$route.params) // outputs 'yay'
+
+    }
+  },
+  created() {
+    this.setBreadcrumsData();
+  },
+  mounted() {
+    this.isShowDocument = this.listDocuments.length > 0 ? true : false;
   }
-  </script> 
+}
+</script> 

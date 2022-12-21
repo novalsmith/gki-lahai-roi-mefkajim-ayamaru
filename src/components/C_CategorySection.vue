@@ -3,7 +3,7 @@
     <v-sheet class="mx-auto">
         <v-slide-group show-arrows next-icon="mdi-arrow-right-thin-circle-outline"
             prev-icon="mdi-arrow-left-thin-circle-outline">
-            <v-slide-item v-for="n in items" :key="n" v-slot="{ active, toggle }">
+            <v-slide-item v-for="n in items" v-slot="{ active, toggle }">
                 <v-btn class="mx-2" :input-value="active" :active-class="('white--text ' + settings.color)" depressed
                     rounded @click="toggle" small>
                     {{ n.text }}
