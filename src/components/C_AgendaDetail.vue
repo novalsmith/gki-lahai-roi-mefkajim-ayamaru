@@ -1,35 +1,43 @@
 <template >
   <div>
     <v-row>
-      <Breadcrumbs />
       <v-col md="10" offset-md="1">
-        <h1 class="font-weight-regular text-center">Pesparawi nasional di maybrat</h1>
-        <v-row class="my-1">
-          <v-col md="4" class="text-center">
-            <v-chip outlined small :color="settings.color" :to="`/informasi/kategori/natal`">
-              Sidang Klasis
-            </v-chip>
-          </v-col>
-          <v-col md="4" class="text-center">
-            <p> 12 Okt 2022</p>
-          </v-col>
-          <v-col md="4" class="text-right">
-            Bagikan
-            <v-btn class="circle" icon :color="settings.color">
-              <v-icon>mdi-facebook</v-icon>
-            </v-btn>
-            <v-btn class="circle" icon :color="settings.color">
-              <v-icon>mdi-email</v-icon>
-            </v-btn>
-            <v-btn class="circle" icon :color="settings.color">
-              <v-icon>mdi-whatsapp</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
+        <v-img src="../assets/lahai2.jpeg" class="white--text align-end rounded-lg"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
+          <v-card-title>
+            <v-container>
+              <h3 class="font-weight-medium"> <v-icon class="white--text"> mdi-bell </v-icon> 25 Des 2023 </h3>
+            </v-container>
+            <v-container>
+              Pesparawi nasional di maybrat 2023 di kabupaten maybrat.
+            </v-container>
+          </v-card-title>
+        </v-img>
+
+        <v-card-actions>
+          <v-chip outlined small :color="settings.color" to="/profil">
+            Profil
+          </v-chip>
+          <span class="ml-5">12 Okt 2022</span>
+          <v-spacer></v-spacer>
+
+          <v-btn icon>
+            <v-icon>mdi-cards-heart-outline</v-icon>
+          </v-btn>
+
+          <v-btn icon>
+            <v-icon>mdi-bookmark-outline</v-icon>
+          </v-btn>
+
+          <v-btn icon>
+            <v-icon>mdi-share-variant</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <!-- </v-card>  -->
       </v-col>
       <v-col md="10" offset-md="1">
-        <v-img class="grey darken-4 rounded-lg" src="../assets/profilemefkajim.jpg"> </v-img>
-        <div class="my-15">
+        <!-- <v-img class="grey darken-4 rounded-lg" src="../assets/profilemefkajim.jpg"> </v-img> -->
+        <div class="my-1">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum repellat libero fugit vero est tempora
             amet, fuga quos ad dignissimos! Quas, necessitatibus maiores eos natus officiis iste repellendus dolorum
             porro.

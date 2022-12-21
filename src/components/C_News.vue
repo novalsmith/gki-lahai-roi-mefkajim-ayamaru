@@ -37,7 +37,7 @@
                                                             {{ item.title }}
                                                         </div>
                                                         <h5 class="float-left font-weight-regular my-2">
-                                                            <v-chip class="ma-2" small>
+                                                            <v-chip class="ma-2" small outlined :color="settings.color">
                                                                 {{ item.category }}
                                                             </v-chip> {{ item.date }}
                                                         </h5>

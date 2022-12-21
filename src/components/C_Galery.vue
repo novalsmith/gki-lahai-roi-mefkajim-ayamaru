@@ -44,7 +44,7 @@
                                                     image.title
                                             }}</h3>
                                             <h5 class="float-left font-weight-regular my-2">
-                                                <v-chip class="ma-2" small>
+                                                <v-chip class="ma-2" small outlined :color="settings.color">
                                                     {{ image.category }}
                                                 </v-chip> {{ image.date }}
                                             </h5>

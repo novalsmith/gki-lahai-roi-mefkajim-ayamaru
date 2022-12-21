@@ -11,19 +11,11 @@
             </v-col>
         </v-row>
         <v-row v-if="settings.screenSize.type.ismd || settings.screenSize.type.islg">
-            <v-col v-show="isShowVideo" sm="6" md="4" lg="4" v-for="{ item, i } in listData" :color="settings.color"
+            <!-- <v-col v-show="isShowVideo" sm="6" md="4" lg="4" v-for="{ item, i } in listData" :color="settings.color"
                 :key="i">
                 <v-hover v-slot="{ hover }" open-delay="200">
                     <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-                        <!-- <iframe width="100%" :height="settings.defaultImageContentHeight" :src="result" frameborder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                            <video-embed css="embed-responsive-1by1" src="https://www.youtube.com/watch?v=s4ObxcdXoFE"
-                                ref="youtube">
-                            </video-embed> -->
-
                         <LazyYoutube width="100%" src="https://www.youtube.com/watch?v=TcMBFSGVi1c" />
-
                         <v-row>
                             <v-col md="6">
                                 <v-chip class="mx-5 my-5 white--text" :outlined="settings.outlinedGeneralButton" small
@@ -41,6 +33,29 @@
                         <v-card-title class="font-weight-regular">Sidang Klasis di Maybrat</v-card-title>
                     </v-card>
                 </v-hover>
+            </v-col> -->
+            <v-col md="4" v-for="{ item,i } in listData" :key="i">
+                <v-flex xs12> 
+                        <v-hover v-slot="{ hover }" open-delay="200"> 
+                                <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                                    <v-container fluid grid-list-lg>
+                                        <v-layout row> 
+                                            <LazyYoutube width="100%" src="https://www.youtube.com/watch?v=TcMBFSGVi1c" />
+                                            <div>
+                                                <div class="subheading font-weight-medium mt-3 ml-3"> 
+                                                    Sidang Klasis di Maybrat
+                                                </div>
+                                                <h5 class="float-left font-weight-regular my-2">
+                                                    <v-chip class="ma-2" small> 
+                                                        Natal
+                                                    </v-chip>   25 Sep 2022
+                                                </h5>
+                                            </div>
+                                        </v-layout>
+                                    </v-container>
+                                </v-card> 
+                        </v-hover> 
+                </v-flex>
             </v-col>
         </v-row>
         <div v-else>

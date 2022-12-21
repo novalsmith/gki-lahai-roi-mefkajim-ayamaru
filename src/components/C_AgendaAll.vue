@@ -2,8 +2,7 @@
     <v-container>
         <v-row class="mb-5">
 
-            <v-col cols="2">
-                <!-- <Breadcrumbs /> -->
+            <v-col cols="2"> 
                 <h4>Kategori</h4>
             </v-col>
             <v-col cols="10">
@@ -17,35 +16,32 @@
                 <div>
                     <v-flex xs12>
                         <v-hover v-slot="{ hover }" open-delay="200">
-                            <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                            <router-link :to="'/agenda/detail/' + item.slugTitle" class="text-decoration-none">
                                 <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                                     <v-container fluid grid-list-lg>
-                                        <v-layout row>
-                                            <v-flex xs5>
-                                                <v-img src="../assets/profilemefkajim.jpg"
-                                                    :width="settings.defaultImageSmallContentWidth"
-                                                    :height="settings.defaultImageSmallContentHeight"
-                                                    lazy-src="../assets/profilemefkajim.jpg"
-                                                    class="grey darken-4 rounded-lg">
-                                                    <template v-slot:placeholder>
-                                                        <v-row class="fill-height ma-0" align="center" justify="center">
-                                                            <v-progress-circular indeterminate color="grey lighten-5">
-                                                            </v-progress-circular>
-                                                        </v-row>
-                                                    </template>
-                                                </v-img>
-                                            </v-flex>
-                                            <v-flex xs7>
-                                                <div>
+                                        <v-layout row> 
+                                            <v-img src="../assets/profilemefkajim.jpg"
+                                                :width="settings.defaultImageSmallContentWidth"
+                                                :height="settings.defaultImageSmallContentHeight"
+                                                lazy-src="../assets/profilemefkajim.jpg"
+                                                class="grey darken-4 rounded-lg">
+                                                <template v-slot:placeholder>
+                                                    <v-row class="fill-height ma-0" align="center" justify="center">
+                                                        <v-progress-circular indeterminate color="grey lighten-5">
+                                                        </v-progress-circular>
+                                                    </v-row>
+                                                </template>
+                                            </v-img> 
+                                            <div class="mt-3 ml-3">
 
-                                                    <h2 class="font-weight-medium grey--text">
-                                                        <v-icon class="grey--text">
-                                                            mdi-bell
-                                                        </v-icon> {{ item.date }}
-                                                    </h2>
+                                                <h2 class="font-weight-medium grey--text">
+                                                    <v-icon class="grey--text">
+                                                        mdi-bell
+                                                    </v-icon> {{ item.date }}
+                                                </h2>
 
-                                                </div>
-                                                <div class="subheading font-weight-medium mt-1">
+
+                                                <div class="subheading font-weight-medium">
                                                     {{ item.title }}
                                                 </div>
                                                 <h5 class="float-left font-weight-regular my-2">
@@ -53,7 +49,7 @@
                                                         {{ item.category }}
                                                     </v-chip> {{ item.datePublish }}
                                                 </h5>
-                                            </v-flex>
+                                            </div> 
                                         </v-layout>
                                     </v-container>
                                 </v-card>
