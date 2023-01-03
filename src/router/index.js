@@ -90,6 +90,11 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage.vue')
   },
   {
+    path: '/jadwal',
+    name: 'Pencarian',
+    component: () => import( /* webpackChunkName: "about" */ '../views/JadwalIbadah.vue')
+  },
+  {
     path: "/:catchAll(.*)",
     component: () => import( /* webpackChunkName: "about" */ '../views/Notfound.vue')
   }
