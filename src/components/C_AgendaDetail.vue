@@ -2,8 +2,8 @@
   <div>
     <v-row>
       <v-col md="10" offset-md="1">
-        <v-img src="../assets/lahai2.jpeg" class="white--text align-end rounded-lg"
-          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
+        <v-img src="../assets/profilemefkajim.jpg" class="white--text align-end rounded-lg"
+          gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px" lazy-src="../assets/profilemefkajim.jpg">
           <v-card-title>
             <v-container>
               <h3 class="font-weight-medium"> <v-icon class="white--text"> mdi-bell </v-icon> 25 Des 2023 </h3>
@@ -15,8 +15,8 @@
         </v-img>
 
         <v-card-actions>
-          <v-chip outlined small :color="settings.color" to="/profil">
-            Profil
+          <v-chip outlined small :color="settings.color" to="/agenda">
+            Pesparawi
           </v-chip>
           <span class="ml-5">12 Okt 2022</span>
           <v-spacer></v-spacer>

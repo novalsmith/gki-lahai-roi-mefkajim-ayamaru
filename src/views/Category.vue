@@ -2,7 +2,7 @@
     <div>
         <v-main>
             <v-container>
-                <Category />
+                <Informations />
             </v-container>
         </v-main>
     </div>
@@ -10,12 +10,12 @@
   
 <script>
 // @ is an alias to /src
-import Category from '@/components/C_CategoryAll.vue';
+import Informations from '@/components/C_Informations.vue';
 
 export default {
     name: "NewsDetail",
     components: {
-        Category
+        Informations
     },
     mounted() {
         this.toTop();

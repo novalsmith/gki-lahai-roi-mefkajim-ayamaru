@@ -3,17 +3,16 @@
         <v-row class="mb-5">
 
             <v-col cols="2">
-                <!-- <Breadcrumbs /> -->
                 <h4>Kategori</h4>
             </v-col>
             <v-col cols="10">
-                <C_CategorySection />
+                <C_CategorySection @getCategoryBySlug="getCategoryBySlug" />
             </v-col>
         </v-row>
 
 
         <v-row>
-            <v-col md="4" v-show="isShowgalery" v-for="( image, i ) in imagesList" :key="i">
+            <v-col md="4" v-show="isShowgalery" v-for="image in galeryData">
                 <v-flex xs12>
                     <v-hover v-slot="{ hover }" open-delay="200">
                         <a href="javascript:void(0)" @click="openImage(image)">
@@ -34,7 +33,7 @@
                                         </v-img>
                                         <div>
                                             <h5 class="float-left font-weight-regular my-2">
-                                                <v-chip class="ma-2" small>
+                                                <v-chip class="ma-2" small outlined :color="settings.color">
                                                     {{ image.category }}
                                                 </v-chip> {{ image.date }}
                                             </h5>
@@ -47,8 +46,8 @@
                 </v-flex>
             </v-col>
             <v-col md="12" v-show="isShowgalery == false">
-                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
-                    Sementara belum ada album foto
+                <v-alert color="blue-grey" dense outlined icon="mdi-information-outline">
+                    Sementara belum ada data
                 </v-alert>
             </v-col>
 
@@ -65,7 +64,6 @@
 
 <script>
 import { mapState } from "vuex";
-import News from '@/components/C_News.vue';
 import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
 import C_CategorySection from '@/components/C_CategorySection.vue';
 import GeneralDialog from "@/components/C_GeneralDialog.vue";
@@ -80,6 +78,8 @@ export default {
         selectedItem: 0,
         localData: null,
         child_component: 'GaleryModal',
+        datafiltering: [],
+        isCategoryClicked: false,
         items: [
             { text: 'Natal', icon: 'mdi-clock', total: 5, slug: "natal" },
             { text: 'Jemaat', icon: 'mdi-account', total: 10, slug: "jemaat" },
@@ -89,16 +89,36 @@ export default {
             { text: 'Oukumene', icon: 'mdi-flag', total: 7, slug: "oukumene" },
         ],
         imagesList: [
-            { source: "lahai1.jpeg", category: "Pesparawi", title: "Natal", total: 15, date: "25 Sept 2022", slug: "natal" },
-            { source: "lahai2.jpeg", category: "KKR", title: "Sidang Klasis 2022", total: 23, date: "15 Sept 2022", slug: "sidang-klasis" },
-            { source: "lahai3.jpeg", category: "Oukumene", title: "Natal", total: 50, date: "6 Agus 2022", slug: "natal" },
-            { source: "lahai4.jpeg", category: "Mefkajim", title: "PKB", total: 14, date: "25 Des 2022", slug: "pkb" },
-            { source: "lahai5.jpeg", category: "Sidang Klasis", title: "PW", total: 20, date: "2 Sept 2022", slug: "pw" },
-            { source: "lahai6.jpeg", category: "Natal", title: "Pesparawi", total: 15, date: "8 Sept 2022", slug: "pesparawi" }
+            {
+                source: "lahai1.jpeg", category: "Natal", title: "Natal", total: 15, date: "25 Sept 2022", slugTitle: "natal",
+                slugCategory: "natal"
+            },
+            {
+                source: "lahai2.jpeg", category: "Natal", title: "Sidang Klasis 2022", total: 23, date: "15 Sept 2022",
+                slugCategory: "natal",
+                slugTitle: "sidang-klasis"
+            },
+            {
+                source: "lahai3.jpeg", category: "Oukumene",
+                slugCategory: "oukumene",
+                title: "Natal", total: 50, date: "6 Agus 2022", slugTitle: "natal"
+            },
+            {
+                source: "lahai4.jpeg", category: "PKB", title: "Ibadah PKB",
+                slugCategory: "pkb",
+                total: 14, date: "25 Des 2022", slugTitle: "pkb"
+            },
+            {
+                source: "lahai5.jpeg", category: "Oukumene", title: "Sidang Klasis",
+                slugCategory: "oukumene", total: 20, date: "2 Sept 2022", slugTitle: "pw"
+            },
+            {
+                source: "lahai6.jpeg", category: "Pesparawi", title: "Pesparawi",
+                slugCategory: "pesparawi", total: 15, date: "8 Sept 2022", slugTitle: "pesparawi"
+            }
         ]
     }),
     components: {
-        News,
         Breadcrumbs,
         C_CategorySection,
         GaleryModal,
@@ -106,12 +126,17 @@ export default {
 
     },
     computed: {
-        ...mapState(['settings'])
+        ...mapState(['settings']),
+        galeryData() {
+            if (!this.isCategoryClicked) {
+                this.datafiltering = this.imagesList;
+            }
+            return this.datafiltering;
+        }
     },
     mounted() {
         this.localData = this.$store.state.settings['dialogData'];
         this.isShowgalery = this.imagesList.length > 0 ? true : false;
-        // console.log(this.items.slug.indexOf('natal'));
     },
     methods: {
         openImage(image) {
@@ -153,22 +178,31 @@ export default {
             }
             this.$store.dispatch('breadcrumData', datas);
         },
+        getCategoryBySlug(event) {
+            var filteredList = [];
+            if (event != '') {
+                if (event === this.$store.state.settings.allCategory) {
+                    filteredList = this.imagesList;
+                } else {
+                    filteredList = this.imagesList.filter((e) => e.slugCategory === event).map((e) => { return e });
+                }
+                this.isCategoryClicked = true;
+                if (filteredList.length == 0) {
+                    this.isShowgalery = false;
+                } else {
+                    this.isShowgalery = true;
+                }
+            }
+            this.datafiltering = filteredList;
+        }
     },
     created() {
         this.setBreadcrumsData();
-        // console.log(this.$route.params.id);
-
-        // var listData = this.items.filter((item) => {
-        //     return item.slug;
-        // });
         let indexData = 0;
         this.items.forEach((el, index) => {
             if (el.slug === this.$route.params.id) indexData = index;
         });
         this.selectedItem = indexData;
-        console.log(indexData);
-        // listData
-        // var datas = this.items.findIndex(x => x.word === 'you');
     }
 }
 </script>

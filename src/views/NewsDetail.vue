@@ -2,7 +2,7 @@
     <div>
         <v-main>
             <v-container>
-                <NewsDetails />
+                <Detail />
             </v-container>
         </v-main>
     </div>
@@ -10,12 +10,12 @@
   
 <script>
 // @ is an alias to /src
-import NewsDetails from '@/components/C_NewsDetail.vue';
+import Detail from '@/components/C_InformationDetail';
 
 export default {
-    name: "NewsDetail",
+    name: "InformationDetail",
     components: {
-        NewsDetails
+        Detail
     },
     mounted() {
         this.toTop();
@@ -25,7 +25,6 @@ export default {
             this.$vuetify.goTo(0)
         }
     }
-
 }
 </script>
   

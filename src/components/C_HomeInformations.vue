@@ -16,7 +16,7 @@
         </v-col>
         <v-col cols="12">
             <v-row>
-                <v-col md="4" v-show="isShowNews" v-for="(item, i) in listData" :key="i">
+                <v-col md="4" v-show="isShowNews" v-for="item in listData">
                     <div>
                         <v-flex xs12>
                             <v-hover v-slot="{ hover }" open-delay="200">
@@ -49,34 +49,7 @@
                                 </router-link>
                             </v-hover>
                         </v-flex>
-                    </div>
-                    <!-- <div v-else>
-                <v-hover v-slot="{ hover }" open-delay="200">
-                    <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
-                        <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
-
-                            <v-img :height="settings.defaultImageContentHeight" src="../assets/lahai5.jpeg">
-                            </v-img>
-
-                            <v-row>
-                                <v-col md="6">
-                                    <v-chip class="mx-5 my-5 white--text" outlined small :color="settings.color"
-                                        :to="'/informasi/kategori/' + item.slugCategory">
-                                        {{ item.category }}
-                                    </v-chip>
-                                </v-col>
-                                <v-col md="6">
-                                    <v-card-subtitle class="float-right">
-                                        {{ item.date }}
-                                    </v-card-subtitle>
-                                </v-col>
-                            </v-row>
-                            <v-divider class="mx-5"></v-divider>
-                            <v-card-title class="font-weight-regular text-subtitle-1">{{ item.title }}</v-card-title>
-                        </v-card>
-                    </router-link>
-                </v-hover>
-            </div> -->
+                    </div> 
                 </v-col>
             </v-row>
         </v-col>
