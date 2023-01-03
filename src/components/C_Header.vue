@@ -26,7 +26,7 @@
                 <div class="d-none d-lg-block">
                     <v-row class="mt-2">
                         <v-col md="4" class="text-left pt-0 pb-0">
-                            <v-btn small v-for="link in menu.topLeft" :key="link.name" :to="link.path" outlined
+                            <v-btn small :active-class="('white--text ' + settings.color)" v-for="link in menu.topLeft" :key="link.name" :to="link.path" outlined
                                 class="text-right" rounded>
 
                                 <v-icon>{{ link.icon }}</v-icon> {{ link.name }}
