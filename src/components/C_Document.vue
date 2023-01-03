@@ -68,7 +68,7 @@ export default {
     ...mapState(['settings']),
     documentsData() {
       if (!this.isCategoryClicked) {
-        this.datafiltering = this.listDocuments;
+        this.datafiltering = this.listData;
       }
       return this.datafiltering;
     }
