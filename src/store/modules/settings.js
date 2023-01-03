@@ -50,6 +50,7 @@ const state = {
     defaultImageContentHeight: "300",
     defaultImageContentWidth: "300",
     defaultImageSmallContentHeight: "120",
+    allCategory: "semua-kategori",
     image: {
         darkmode: "logoDark.png",
         lightmode: "logoLight.png"

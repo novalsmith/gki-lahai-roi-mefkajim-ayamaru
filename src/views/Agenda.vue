@@ -10,7 +10,7 @@
 
 <script>
 // @ is an alias to /src
-import Agenda from '@/components/C_AgendaAll.vue';
+import Agenda from '@/components/C_Agenda.vue';
 
 export default {
   name: "AgendaDetail",

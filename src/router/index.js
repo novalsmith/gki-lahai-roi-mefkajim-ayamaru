@@ -40,7 +40,7 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/Category.vue')
   },
   {
-    path: '/informasi/kategori/:id',
+    path: '/informasi/:id',
     name: 'kategori',
     component: () => import( /* webpackChunkName: "about" */ '../views/Category.vue')
   },

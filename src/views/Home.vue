@@ -5,9 +5,9 @@
     <v-main>
       <v-container>
         <Carausel />
-        <Hero />
-        <News />
-        <Agenda />
+        <HomeProfile />
+        <HomeInformations />
+        <HomeAgenda />
       </v-container>
     </v-main>
     <Parallax />
@@ -25,9 +25,9 @@
           </v-row>
         </div>
         <div v-else> -->
-          <Poster />
-          <Documents />
-        
+        <Poster />
+        <HomeDocuments />
+
         <!-- </div> -->
         <Galery />
         <Videos />
@@ -40,25 +40,24 @@
 
 <script>
 // @ is an alias to /src
-import Hero from '@/components/C_Hero.vue';
-import Carausel from '@/components/C_Carausel.vue';
-import Agenda from '@/components/C_Agenda.vue';
-import News from '@/components/C_News.vue';
-import Documents from '@/components/C_Documents.vue';
-import Poster from '@/components/C_Poster.vue';
-import Parallax from '@/components/C_Parallax.vue';
-import Videos from '@/components/C_Videos.vue';
-import Galery from '@/components/C_Galery.vue';
-// import Search from '../components/C_SearchingPage.vue'
+import HomeProfile from '@/components/C_HomeProfile';
+import Carausel from '@/components/C_Carausel';
+import HomeAgenda from '@/components/C_HomeAgenda';
+import HomeInformations from '@/components/C_HomeInformations';
+import HomeDocuments from '@/components/C_HomeDocuments';
+import Poster from '@/components/C_Poster';
+import Parallax from '@/components/C_Parallax';
+import Videos from '@/components/C_HomeVideos';
+import Galery from '@/components/C_Galery';
 import { mapState } from "vuex";
 export default {
   name: 'Home',
   components: {
-    Hero,
+    HomeProfile,
     Carausel,
-    Agenda,
-    News,
-    Documents,
+    HomeAgenda,
+    HomeInformations,
+    HomeDocuments,
     Poster,
     Parallax,
     Videos,

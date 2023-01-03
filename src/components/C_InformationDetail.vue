@@ -2,15 +2,16 @@
   <v-row>
     <v-col md="10" offset-md="1">
       <!-- <Breadcrumbs v-if="settings.screenSize.type.isxs || settings.screenSize.type.ismd" v-show="false" /> -->
-      <Breadcrumbs />
+      <!-- <Breadcrumbs /> -->
       <!-- <v-card> -->
       <v-img src="../assets/lahai2.jpeg" class="white--text align-end rounded-lg"
-        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px">
+        gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="400px" lazy-src="../assets/lahai2.jpeg">
         <v-card-title>
           Ibadah Perayaan Natal 25 Desember diadakan serentak se-papua barat di GKI
           Lahai-Roi Mefkajim Ayamaru Kabupaten Maybrat
         </v-card-title>
       </v-img>
+
 
       <v-card-actions>
         <v-chip outlined small :color="settings.color" :to="`/informasi/kategori/natal`">
@@ -87,15 +88,15 @@
           atque optio at quas ratione! Temporibus!</p>
       </div>
 
-      <OtherNews />
+      <!-- <OtherNews /> -->
     </v-col>
   </v-row>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
-import OtherNews from '@/components/C_OtherNews.vue';
+// import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
+// import OtherNews from '@/components/C_OtherNews.vue';
 export default {
   name: "Video",
   computed: {
@@ -107,8 +108,8 @@ export default {
     }
   },
   components: {
-    Breadcrumbs,
-    OtherNews
+    // Breadcrumbs,
+    // OtherNews
   },
   methods: {
     setBreadcrumsData() {

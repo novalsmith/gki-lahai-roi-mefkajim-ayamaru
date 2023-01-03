@@ -41,7 +41,7 @@
                                                 <p v-html="image.title"></p>
                                             </div>
                                             <h5 class="float-left font-weight-regular my-2">
-                                                <v-chip class="ma-2" small>
+                                                <v-chip class="ma-2" small outlined :color="settings.color">
                                                     <v-icon> mdi-download </v-icon> Download
                                                 </v-chip> 20 Des 2022
                                             </h5>

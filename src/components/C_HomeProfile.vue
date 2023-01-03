@@ -1,10 +1,8 @@
 <template>
-
-
     <div v-if="!settings.screenSize.type.islg">
         <v-flex xs12 class="mb-10">
             <v-hover v-slot="{ hover }" open-delay="200">
-                <router-link to="/agenda/detail/" class="text-decoration-none">
+                <router-link to="profil" class="text-decoration-none">
                     <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
                         <v-container fluid grid-list-lg>
                             <v-layout row>

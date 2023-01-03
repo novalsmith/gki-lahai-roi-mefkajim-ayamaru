@@ -1,5 +1,5 @@
 <template>
-  <v-footer padless>
+  <v-footer padless color="primary">
     <div v-if="!settings.screenSize.type.islg">
       <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
         <v-row class="my-1 mx-1">

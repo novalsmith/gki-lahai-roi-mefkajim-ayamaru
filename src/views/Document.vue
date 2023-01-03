@@ -10,7 +10,7 @@
   
 <script>
 // @ is an alias to /src
-import Document from '@/components/C_DocumentAll.vue';
+import Document from '@/components/C_Document.vue';
 
 export default {
     name: "DocumentDetail",

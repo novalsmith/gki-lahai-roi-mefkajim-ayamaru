@@ -85,8 +85,6 @@
           eum aut hic dicta reprehenderit voluptates officiis earum ex,
           atque optio at quas ratione! Temporibus!</p>
       </div>
-
-      <OtherNews />
     </v-col>
   </v-row>
 </template>
