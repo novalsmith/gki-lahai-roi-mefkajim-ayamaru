@@ -49,7 +49,7 @@
                                 </router-link>
                             </v-hover>
                         </v-flex>
-                    </div> 
+                    </div>
                 </v-col>
             </v-row>
         </v-col>
