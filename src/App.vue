@@ -4,10 +4,9 @@
       <img src="https://cdn.pixelfordinner.cloud/uploads/2014/11/voa_panel_sample-1024x0-c-f.jpg" width="100%" alt=""
         height="200%">
     </v-system-bar>
-    <!-- is acctive web for maintenance info or welcoming page -->
     <div v-if="isActiveWeb">
-      <v-container> 
-          <C_Header /> 
+      <v-container>
+        <C_Header />
       </v-container>
 
       <router-view />
@@ -15,10 +14,6 @@
         class="mb-15">
         <v-icon color="white">mdi-chevron-up</v-icon>
       </v-btn>
-      <!-- <v-btn v-scroll="onScroll" v-show="fab" small fab fixed bottom right :color="settings.color" @click="toTop"
-        class="mb-15" v-else>
-        <v-icon color="white">mdi-chevron-up</v-icon>
-      </v-btn> -->
 
       <v-container>
         <div v-if="loading">

@@ -12,23 +12,9 @@
     </v-main>
     <Parallax />
     <v-main class="mt-15">
-      <v-container>
-        <!-- <div v-if="settings.screenSize.type.islg">
-          <v-row>
-            <v-col md="5">
-              <Documents />
-            </v-col>
-
-            <v-col md="7">
-              <Poster />
-            </v-col>
-          </v-row>
-        </div>
-        <div v-else> -->
+      <v-container> 
         <Poster />
-        <HomeDocuments />
-
-        <!-- </div> -->
+        <HomeDocuments /> 
         <Galery />
         <Videos />
       </v-container>
@@ -61,8 +47,7 @@ export default {
     Poster,
     Parallax,
     Videos,
-    Galery,
-    // Search
+    Galery
   },
   data: () => ({
     loading: false

@@ -93,13 +93,7 @@
                         </v-col>
                     </v-row>
                 </div>
-            </v-main>
-
-
-
-
-
-
+            </v-main> 
         </v-app-bar>
     </div>
 </template>
