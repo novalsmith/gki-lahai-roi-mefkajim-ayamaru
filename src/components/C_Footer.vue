@@ -16,9 +16,10 @@
         </v-row>
         <v-divider></v-divider>
         <v-list nav dense>
-          <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
+          <v-list-item-group v-model="group" :active-class="settings.color" class="white--text">
             <v-list-item v-for="link in menu.right" :key="link.icon" :to="link.path">
-              <v-list-item-title>{{ link.name }}</v-list-item-title>
+               <v-list-item-title>{{ link.name }}</v-list-item-title>
+             
             </v-list-item>
 
           </v-list-item-group>
