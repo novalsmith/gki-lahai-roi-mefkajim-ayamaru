@@ -1,7 +1,7 @@
  
 <template class="mt-1">
     <div class="mb-15">
-        <v-slide-group v-model="model" active-class="success" center-active show-arrows next-icon="mdi-chevron-right"
+        <v-slide-group v-model="model" active-class="success" center-active :show-arrows="(!isMobile)" next-icon="mdi-chevron-right"
             prev-icon="mdi-chevron-left">
             <v-slide-item v-for="item in items" v-slot="{ active, toggle }">
                 <v-card class="ma-4">
@@ -17,11 +17,13 @@
     </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
     name: "Poster",
     data() {
         return {
             model: "",
+            isMobile : false,
             items: [
                 {
                     category: "NATAL",
@@ -65,5 +67,14 @@ export default {
             ],
         }
     },
+    computed: {
+    ...mapState(['settings']) 
+  
+  },
+  mounted() {
+    if(this.$store.state.settings['screenSize'].type.isxs || this.$store.state.settings['screenSize'].type.ismd){
+        this.isMobile = true
+    }
+  },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-footer padless color="primary">
     <div v-if="!settings.screenSize.type.islg">
-      <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
+      <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg" style="position: fixed; z-index: 888;">
         <v-row class="my-1 mx-1">
           <v-col md="10">
             <span>Menu</span>
@@ -15,33 +15,47 @@
           </v-col>
         </v-row>
         <v-divider></v-divider>
+
         <v-list nav dense>
-          <v-list-item-group v-model="group" :active-class="settings.color" class="white--text">
-            <v-list-item v-for="link in menu.right" :key="link.icon" :to="link.path">
-               <v-list-item-title>{{ link.name }}</v-list-item-title>
-             
+          <div v-for="(link, i) in menu.right" :key="i">
+
+            <v-list-item v-if="!link.submenu" :to="link.path" :active-class="settings.color + ' white--text'">
+
+              <v-list-item-title v-text="link.name" />
             </v-list-item>
 
-          </v-list-item-group>
+            <v-list-group no-action v-else :key="link.name" :prepend-icon="link.icon"
+              :event="(link.name === 'Media' ? '' : 'click')" :value="false"
+              :active-class="(link.name === 'Media' ? 'blue-grey lighten-2' : settings.color)" class="white--text">
+              <template v-slot:activator>
+                <v-list-item-title>{{ link.name }}</v-list-item-title>
+              </template>
+
+              <v-list-item v-for="sublink in link.submenu" :to="sublink.path" :key="sublink.name"
+                :active-class="settings.color">
+                <v-list-item-title>{{ sublink.name }}</v-list-item-title>
+              </v-list-item>
+            </v-list-group>
+          </div>
         </v-list>
       </v-navigation-drawer>
-      <v-bottom-navigation fixed :color="settings.color" height="60">
+      <v-bottom-navigation fixed :color="settings.color" height="60" style="position: fixed; z-index: 999;">
         <v-btn to="/">
-          <!-- <span>Home</span> -->
+          <span>Home</span>
           <v-icon>mdi-home</v-icon>
         </v-btn>
         <v-btn @click.stop="drawer = !drawer">
-          <!-- <span>Menu</span> -->
+          <span>Menu</span>
           <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-btn>
-          <v-icon>
-            mdi-newspaper-variant-multiple
-          </v-icon>
         </v-btn>
 
         <v-btn to="/pencarian">
-          <v-icon>mdi-magnify</v-icon>
+          <span>Info</span>
+          <v-icon>mdi-newspaper-variant-multiple</v-icon>
+        </v-btn>
+        <v-btn to="/jadwal">
+          <span>Jadwal</span>
+          <v-icon>mdi-calendar-multiselect-outline</v-icon>
         </v-btn>
 
       </v-bottom-navigation>
@@ -119,3 +133,8 @@ export default {
   }
 }
 </script>
+<style>
+.bg-active {
+  color: white !important;
+}
+</style>

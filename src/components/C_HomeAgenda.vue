@@ -1,29 +1,31 @@
 <template>
-    <v-row class="my-5">
-        <v-col md="6">
-            <h3 class="font-weight-regular">
-                <v-icon>
-                    mdi-calendar-multiple-check
-                </v-icon>
-                Agenda
-            </h3>
-        </v-col>
-        <v-col md="6">
-            <v-btn v-show="isShowAgenda" small text :color="settings.color" class="white-text float-right" to="/agenda">
-                Semua <v-icon> mdi-chevron-right</v-icon>
-            </v-btn>
-        </v-col>
-        <v-col md="6" v-show="isShowAgenda" v-for="( item, i ) in listData" :key="i">
-            <div>
+    <v-container>
+        <v-row class="my-5">
+            <v-col md="6">
+                <h3 class="font-weight-regular">
+                    <v-icon>
+                        mdi-calendar-multiple-check
+                    </v-icon>
+                    Agenda
+                </h3>
+            </v-col>
+            <v-col md="6">
+                <v-btn v-show="isShowAgenda" small text :color="settings.color" class="white-text float-right"
+                    to="/agenda">
+                    Semua <v-icon> mdi-chevron-right</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
+        <v-row>
+            <v-col md="6" v-show="isShowAgenda" v-for="item in listData">
                 <v-flex xs12>
                     <v-hover v-slot="{ hover }" open-delay="200">
                         <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
                             <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
                                 <v-container fluid grid-list-lg>
                                     <v-layout row>
-                                        <v-flex xs5> 
-                                            <v-img src="../assets/profilemefkajim.jpg"
-                                                :width="settings.defaultImageSmallContentWidth"
+                                        <v-flex xs5>
+                                            <v-img src="../assets/profilemefkajim.jpg" width="300"
                                                 :height="settings.defaultImageSmallContentHeight"
                                                 lazy-src="../assets/profilemefkajim.jpg"
                                                 class="grey darken-4 rounded-lg">
@@ -60,14 +62,14 @@
                         </router-link>
                     </v-hover>
                 </v-flex>
-            </div>
-        </v-col>
-        <v-col md="12" v-show="isShowAgenda == false">
-            <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
-                Sementara belum ada agenda
-            </v-alert>
-        </v-col>
-    </v-row>
+            </v-col>
+            <v-col md="12" v-show="isShowAgenda == false">
+                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
+                    Sementara belum ada agenda
+                </v-alert>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>

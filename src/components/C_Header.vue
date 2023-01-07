@@ -15,10 +15,21 @@
                         <v-img alt="Vuetify Name" v-if="settings.screenSize.type.isxs" contain
                             :src="require(`../assets/${imageName}`)" width="100%" max-width="60%" />
                         <v-spacer></v-spacer>
-
-                        <v-switch inset :color="settings.color" :input-value="darkMode" @change="toggleDarkMode"
+                        <!-- <v-switch inset :color="settings.color" :input-value="darkMode" @change="toggleDarkMode"
                             class="my-5">
-                        </v-switch>
+                        </v-switch> -->
+                        <template>
+                            <div class="my-5">
+                                <v-btn icon @click="toggleDarkMode">
+                                    <v-icon>
+                                        {{
+                                            $vuetify.theme.dark ? 'mdi-white-balance-sunny' :
+                                                'mdi-moon-waxing-crescent'
+                                        }}
+                                    </v-icon>
+                                </v-btn>
+                            </div>
+                        </template>
 
                         <!-- <SearchingBox class="my-2" /> -->
                     </v-row>
@@ -26,8 +37,8 @@
                 <div class="d-none d-lg-block">
                     <v-row class="mt-2">
                         <v-col md="4" class="text-left pt-0 pb-0">
-                            <v-btn small :active-class="('white--text ' + settings.color)" v-for="link in menu.topLeft" :key="link.name" :to="link.path" outlined
-                                class="text-right" rounded>
+                            <v-btn small :active-class="('white--text ' + settings.color)" v-for="link in menu.topLeft"
+                                :key="link.name" :to="link.path" outlined class="text-right" rounded>
 
                                 <v-icon>{{ link.icon }}</v-icon> {{ link.name }}
                             </v-btn>
@@ -39,15 +50,27 @@
                                         class="circle mx-2">
 
                                         <v-icon>{{ link.icon }}</v-icon>
-                                    </v-btn> 
+                                    </v-btn>
                                 </v-col>
 
                                 <v-col md="1" class="my-1 pb-0">
-                                    <template>
+                                    <!-- <template>
                                         <div class="text-center d-flex align-center justify-space-around">
                                             <v-switch inset :color="settings.color" :input-value="darkMode"
                                                 @change="toggleDarkMode">
                                             </v-switch>
+                                        </div>
+                                    </template> -->
+                                    <template>
+                                        <div class="text-center d-flex align-center justify-space-around">
+                                            <v-btn small icon @click="toggleDarkMode">
+                                                <v-icon>
+                                                    {{
+                                                        $vuetify.theme.dark ? 'mdi-white-balance-sunny' :
+                                                            'mdi-moon-waxing-crescent'
+                                                    }}
+                                                </v-icon>
+                                            </v-btn>
                                         </div>
                                     </template>
                                 </v-col>
@@ -64,8 +87,9 @@
 
                         </v-col>
                         <v-col md="9" class="text-right">
-                            <v-btn :small="styleData.small" :rounded="styleData.rounded" v-for="link in menu.right" :active-class="('white--text ' + settings.color)"
-                                :key="link.name" :to="link.path" text class="my-4" :outlined="link.outlined">
+                            <v-btn :small="styleData.small" :rounded="styleData.rounded" v-for="link in menu.right"
+                                :active-class="('white--text ' + settings.color)" :key="link.name" :to="link.path" text
+                                class="my-4" :outlined="link.outlined">
 
                                 <v-menu v-if="link.submenu != undefined" open-on-hover bottom offset-y
                                     transition="slide-x-transition">
@@ -93,7 +117,7 @@
                         </v-col>
                     </v-row>
                 </div>
-            </v-main> 
+            </v-main>
         </v-app-bar>
     </div>
 </template>

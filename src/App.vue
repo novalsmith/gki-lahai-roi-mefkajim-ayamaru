@@ -15,13 +15,8 @@
         <v-icon color="white">mdi-chevron-up</v-icon>
       </v-btn>
 
-      <v-container>
-        <div v-if="loading">
-          <v-skeleton-loader type="list-item-avatar-three-line"></v-skeleton-loader>
-        </div>
-        <div v-else>
-          <Footers class="mt-15" />
-        </div>
+      <v-container> 
+          <Footers class="mt-15" /> 
       </v-container>
     </div>
     <div v-else>

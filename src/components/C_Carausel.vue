@@ -7,51 +7,22 @@
       <v-carousel-item v-for="(item, i) in items" :key="i" :src="require(`../assets/${item.img}`)">
         <v-row class="fill-height" align="center" justify="center">
           <v-col class="ml-15">
-            <v-chip class="ma-2" close :color="settings.color" text-color="white"
+            <v-chip class="ma-2" close :color="settings.color" small text-color="white"
               :to="'/informasi/kategori/' + item.slug">
               {{ item.category }}
             </v-chip>
             <br>
-            <div class="text-h4 white--text float-left">
-              {{ item.title }}
-            </div>
+            <router-link :to="'/informasi/detail/' + item.slugTitle">
+              <div class="text-h4 white--text float-left">
+                {{ item.title }}
+              </div>
+            </router-link>
           </v-col>
         </v-row>
       </v-carousel-item>
     </v-carousel>
   </div>
-  <!-- <div class="mb-5">
 
-    <v-slide-group v-model="model" active-class="success" center-active>
-      <v-slide-item v-for="(item, i) in items" :key="i" v-slot="{ active, toggle }">
-        <v-card class="ma-4" @click="toggle">
-          <v-row class="fill-height" align="center" justify="center">
-
-            <v-scale-transition>
-              <v-img :src="require(`../assets/${item.img}`)" height="300" width="280" class="rounded-lg"
-                transition="false">
-                <v-row>
-                  <v-col class="my-2 mx-2">
-                    <v-chip class="ma-2" small close :color="settings.color" text-color="white"
-                      :to="'/informasi/kategori/' + item.slug">
-                      {{ item.category }}
-                    </v-chip>
-
-                    <router-link :to="'/informasi/kategori/' + item.slug" class="text-decoration-none">
-                      <div class="text-h5 white--text float-left">
-                        {{ item.title }}
-                      </div>
-                    </router-link>
-                  </v-col>
-                </v-row>
-              </v-img>
-
-            </v-scale-transition>
-          </v-row>
-        </v-card>
-      </v-slide-item>
-    </v-slide-group>
-  </div> -->
 
 </template>
 <script>
@@ -72,24 +43,28 @@ export default {
           category: "NATAL",
           slug: "natal",
           title: "Ibadah Natal GKI Lahai-Roi Mefkajim Ayamaru Papua Barat 25 Desember 2022",
+          slugTitle: 'ibadah-natal',
           img: 'lahai1.jpeg',
         },
         {
           category: "KUNJUNGAN",
           slug: "jemaat",
           title: "Kunjungan Bupati Maybrat",
+          slugTitle: 'kunjungan-bupati-maybrat',
           img: 'lahai2.jpeg',
         },
         {
           category: "SIDANG KLASIS",
           slug: "sidang-klasis",
           title: "Sidang Klasis di Maybrat",
+          slugTitle: 'sidang-klasis-di-maybrat',
           img: 'lahai3.jpeg',
         },
         {
           category: "PESPARAWI",
           slug: "pesparawi",
           title: "Pesparawi se Indonesia di Kabupaten Maybrat 2024",
+          slugTitle: 'pesparawi-se-indonesia-di-kabupaten-maybrat-2024',
           img: 'lahai5.jpeg',
         },
       ],
