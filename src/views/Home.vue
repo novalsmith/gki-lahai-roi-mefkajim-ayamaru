@@ -12,11 +12,11 @@
     </v-main>
     <Parallax />
     <v-main class="mt-15">
-      <v-container> 
-        <Poster />
-        <HomeDocuments /> 
+      <v-container>
+     <Poster />
+        <HomeDocuments />
         <Galery />
-        <Videos />
+        <Videos />    
       </v-container>
     </v-main>
   </div>
@@ -63,5 +63,13 @@ export default {
   computed: {
     ...mapState(['settings'])
   },
+  mounted() {
+    this.toTop();
+  },
+  methods: {
+    toTop() {
+      this.$vuetify.goTo(0)
+    }
+  }
 }
 </script>
