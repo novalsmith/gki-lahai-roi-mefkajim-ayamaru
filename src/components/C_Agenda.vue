@@ -1,13 +1,16 @@
 <template>
     <div v-if="settings.screenSize.type.islg">
-        <v-row class="mb-5"> 
+        <v-row class="mb-5">
+
             <v-col cols="2">
                 <h4>Kategori</h4>
             </v-col>
             <v-col cols="10">
                 <C_CategorySection @getCategoryBySlug="getCategoryBySlug" />
             </v-col>
-        </v-row> 
+        </v-row>
+
+
         <v-row>
             <v-col md="4" v-for="item in agendaData">
                 <div>
@@ -60,13 +63,92 @@
                     Sementara belum ada data
                 </v-alert>
             </v-col>
-        </v-row> 
+        </v-row>
+
+    </div>
+    <div v-else>
+
+        <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
+            <v-row class="my-1 mx-1">
+                <v-col md="10">
+                    <span>Kategori</span>
+                </v-col>
+                <v-col md="2" class="text-right">
+                    <v-btn icon @click.stop="drawer = false" :color="settings.color">
+                        <v-icon>
+                            mdi-close
+                        </v-icon>
+                    </v-btn>
+                </v-col>
+            </v-row>
+            <v-divider></v-divider>
+            <C_CategorySection @getCategoryBySlug="getCategoryBySlug" />
+        </v-navigation-drawer>
+
+        <v-btn text @click.stop="drawer = !drawer">
+            <v-icon>mdi-menu</v-icon>
+            <span class="text-h7 mx-2">Kategori</span>
+        </v-btn>
+        <span class="text-h7 mx-2 text-right grey--text text-uppercase">{{ selectedCategory.title }}</span>
+        <SearchingModal @searchData="getCategoryBySlug" />
+
+        <v-col md="12" v-show="isShowAgenda" v-for="item in agendaData">
+            <v-flex xs12>
+                <v-hover v-slot="{ hover }" open-delay="200">
+                    <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                        <v-card :elevation="hover ? 18 : 1" :class="{ 'on-hover': hover }">
+                            <v-container fluid grid-list-lg>
+                                <v-layout row>
+                                    <v-flex xs5>
+                                        <v-img src="../assets/profilemefkajim.jpg" width="300"
+                                            :height="settings.defaultImageSmallContentHeight"
+                                            lazy-src="../assets/profilemefkajim.jpg" class="grey darken-4 rounded-lg">
+                                            <template v-slot:placeholder>
+                                                <v-row class="fill-height ma-0" align="center" justify="center">
+                                                    <v-progress-circular indeterminate color="grey lighten-5">
+                                                    </v-progress-circular>
+                                                </v-row>
+                                            </template>
+                                        </v-img>
+                                    </v-flex>
+                                    <v-flex xs7>
+                                        <div>
+
+                                            <h2 class="font-weight-medium grey--text">
+                                                <v-icon class="grey--text">
+                                                    mdi-bell
+                                                </v-icon> {{ item.date }}
+                                            </h2>
+
+                                        </div>
+                                        <div class="subheading font-weight-medium mt-1">
+                                            {{ item.title }}
+                                        </div>
+                                        <h5 class="float-left font-weight-regular my-2">
+                                            <v-chip class="ma-2" small outlined :color="settings.color">
+                                                {{ item.category }}
+                                            </v-chip> {{ item.datePublish }}
+                                        </h5>
+                                    </v-flex>
+                                </v-layout>
+                            </v-container>
+                        </v-card>
+                    </router-link>
+                </v-hover>
+            </v-flex>
+        </v-col>
+        <v-col md="12" v-show="isShowAgenda == false">
+            <v-alert color="blue-grey" icon="mdi-information-outline" dense>
+                Sementara belum ada agenda
+            </v-alert>
+        </v-col>
     </div>
 
 </template>
 
 <script>
 import C_CategorySection from '@/components/C_CategorySection.vue';
+import SearchingModal from '@/components/C_SearchingModal.vue';
 
 import { mapState } from "vuex";
 export default {
@@ -75,6 +157,11 @@ export default {
         datafiltering: [],
         isCategoryClicked: false,
         isShowAgenda: false,
+        drawer: false,
+        selectedCategory: {
+            title: "",
+            slug: ""
+        },
         items: [
             { text: 'Desember 2022', icon: 'mdi-clock', total: 5 },
             { text: 'Januari 2021', icon: 'mdi-account', total: 10 },
@@ -151,7 +238,8 @@ export default {
         ]
     }),
     components: {
-        C_CategorySection
+        C_CategorySection,
+        SearchingModal
     },
     computed: {
         ...mapState(['settings', 'breadcrumData']),
@@ -186,24 +274,42 @@ export default {
         },
         getCategoryBySlug(event) {
             var filteredList = [];
-            if (event != '') {
-                if (event === this.$store.state.settings.allCategory) {
-                    filteredList = this.listData;
-                } else {
-                    filteredList = this.listData.filter((e) => e.slugCategory === event).map((e) => { return e });
-                }
+            if (typeof event === 'string') {
+                filteredList = this.listData
+                    .filter(
+                        ({ title }) => [title]
+                            .some(value => value.toLowerCase().includes(event.toLowerCase()))
+                    );
                 this.isCategoryClicked = true;
-                if (filteredList.length == 0) {
-                    this.isShowAgenda = false;
-                } else {
-                    this.isShowAgenda = true;
+                this.selectedCategory.title = "";
+                this.selectedCategory.slug = "";
+            } else {
+                if (event != null) {
+                    this.selectedCategory.title = event.text;
+                    this.selectedCategory.slug = event.slug;
+                    if (event.slug === this.$store.state.settings.allCategory) {
+                        filteredList = this.listData;
+                    } else {
+                        filteredList = this.listData.filter((e) => e.slugCategory === event.slug).map((e) => { return e });
+                    }
+                    this.isCategoryClicked = true;
+
                 }
             }
+
+            if (filteredList.length == 0) {
+                this.isShowAgenda = false;
+            } else {
+                this.isShowAgenda = true;
+            }
             this.datafiltering = filteredList;
-        }
+        },
     },
     created() {
         this.setBreadcrumsData();
+    },
+    mounted() {
+        this.isShowAgenda = this.items.length > 0 ? true : false;
     },
 }
 </script>

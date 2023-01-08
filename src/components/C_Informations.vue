@@ -56,7 +56,6 @@
         </v-row>
     </div>
     <div v-else>
-
         <div v-if="!settings.screenSize.type.islg">
             <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
                 <v-row class="my-1 mx-1">
@@ -79,54 +78,50 @@
             <v-icon>mdi-menu</v-icon>
             <span class="text-h7 mx-2">Kategori</span>
         </v-btn>
-        <!-- <v-spacer></v-spacer> -->
         <span class="text-h7 mx-2 text-right grey--text text-uppercase">{{ selectedCategory.title }}</span>
         <SearchingModal @searchData="getCategoryBySlug" />
-        <v-list three-line color="primary">
-            <v-col cols="12">
-                <v-row>
-                    <v-col md="4" v-show="isShowNews" v-for="item in infoData">
-                        <v-flex xs12>
-                            <v-hover v-slot="{ hover }" open-delay="200">
-                                <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
-                                    <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
-                                        <v-container fluid grid-list-lg>
-                                            <v-layout row>
-                                                <v-flex xs5>
+        <v-col cols="12">
+            <v-row>
+                <v-col md="4" v-show="isShowNews" v-for="item in infoData">
+                    <v-flex xs12>
+                        <v-hover v-slot="{ hover }" open-delay="200">
+                            <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+                                <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                                    <v-container fluid grid-list-lg>
+                                        <v-layout row>
+                                            <v-flex xs5>
 
-                                                    <v-img src="../assets/lahai5.jpeg" width="300"
-                                                        :height="settings.defaultImageSmallContentHeight"
-                                                        class="rounded-lg">
-                                                    </v-img>
-                                                </v-flex>
-                                                <v-flex xs7>
-                                                    <div>
-                                                        <div class="subheading font-weight-medium">
-                                                            {{ item.title }}
-                                                        </div>
-                                                        <h5 class="float-left font-weight-regular my-2">
-                                                            <v-chip class="ma-2" small outlined :color="settings.color">
-                                                                {{ item.category }}
-                                                            </v-chip> {{ item.date }}
-                                                        </h5>
+                                                <v-img src="../assets/lahai5.jpeg" width="300"
+                                                    :height="settings.defaultImageSmallContentHeight"
+                                                    class="rounded-lg">
+                                                </v-img>
+                                            </v-flex>
+                                            <v-flex xs7>
+                                                <div>
+                                                    <div class="subheading font-weight-medium">
+                                                        {{ item.title }}
                                                     </div>
-                                                </v-flex>
-                                            </v-layout>
-                                        </v-container>
-                                    </v-card>
-                                </router-link>
-                            </v-hover>
-                        </v-flex>
-                    </v-col>
-                </v-row>
-            </v-col>
-            <v-col md="12" v-show="isShowNews == false">
-                <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
-                    Sementara belum ada informasi
-                </v-alert>
-            </v-col>
-
-        </v-list>
+                                                    <h5 class="float-left font-weight-regular my-2">
+                                                        <v-chip class="ma-2" small outlined :color="settings.color">
+                                                            {{ item.category }}
+                                                        </v-chip> {{ item.date }}
+                                                    </h5>
+                                                </div>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-container>
+                                </v-card>
+                            </router-link>
+                        </v-hover>
+                    </v-flex>
+                </v-col>
+            </v-row>
+        </v-col>
+        <v-col md="12" v-show="isShowNews == false">
+            <v-alert color="blue-grey" icon="mdi-information-outline" dense>
+                Sementara belum ada informasi
+            </v-alert>
+        </v-col>
 
     </div>
 </template>
@@ -263,7 +258,7 @@ export default defineComponent({
                 filteredList = this.listData
                     .filter(
                         ({ title }) => [title]
-                            .some(value => value.toLowerCase().includes(event))
+                            .some(value => value.toLowerCase().includes(event.toLowerCase()))
                     );
                 this.isCategoryClicked = true;
                 this.selectedCategory.title = "";

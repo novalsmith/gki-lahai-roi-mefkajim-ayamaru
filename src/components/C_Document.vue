@@ -55,6 +55,72 @@
 
     </v-row>
   </div>
+  <div v-else>
+    <div v-if="!settings.screenSize.type.islg">
+      <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg">
+        <v-row class="my-1 mx-1">
+          <v-col md="10">
+            <span>Kategori</span>
+          </v-col>
+          <v-col md="2" class="text-right">
+            <v-btn icon @click.stop="drawer = false" :color="settings.color">
+              <v-icon>
+                mdi-close
+              </v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-divider></v-divider>
+        <C_CategorySection @getCategoryBySlug="getCategoryBySlug" />
+      </v-navigation-drawer>
+    </div>
+    <v-btn text @click.stop="drawer = !drawer">
+      <v-icon>mdi-menu</v-icon>
+      <span class="text-h7 mx-2">Kategori</span>
+    </v-btn>
+    <span class="text-h7 mx-2 text-right grey--text text-uppercase">{{ selectedCategory.title }}</span>
+    <SearchingModal @searchData="getCategoryBySlug" />
+    <v-row>
+
+      <v-col md="12" v-for="item in documentsData">
+        <v-flex xs12>
+          <v-hover v-slot="{ hover }" open-delay="200">
+            <router-link :to="'/informasi/detail/' + item.slugTitle" class="text-decoration-none">
+              <v-card :elevation="hover ? 5 : 1" :class="{ 'on-hover': hover }">
+                <v-container fluid grid-list-lg>
+                  <v-layout row>
+                    <v-flex xs5>
+
+                      <v-img src="../assets/lahai5.jpeg" class="rounded-lg">
+                      </v-img>
+                    </v-flex>
+                    <v-flex xs7>
+                      <div>
+                        <div class="subheading font-weight-medium">
+                          {{ item.title }}
+                        </div>
+                        <h5 class="float-left font-weight-regular my-2">
+                          <v-chip class="ma-2" small outlined :color="settings.color">
+                            <v-icon> mdi-download </v-icon> Download
+                          </v-chip> 20 Des 2022
+                        </h5>
+                      </div>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </router-link>
+          </v-hover>
+        </v-flex>
+      </v-col>
+      <v-col md="12" v-show="isShowDocument == false">
+        <v-alert :color="settings.color + ' lighten-5'" icon="mdi-information-outline" dense>
+          Sementara belum ada informasi
+        </v-alert>
+      </v-col>
+
+    </v-row>
+  </div>
 </template>
   
 <script>
@@ -62,6 +128,7 @@ import { mapState } from "vuex";
 import Breadcrumbs from '@/components/C_Breadcrumbs.vue';
 import OtherNews from '@/components/C_OtherNews.vue';
 import C_CategorySection from '@/components/C_CategorySection.vue';
+import SearchingModal from '@/components/C_SearchingModal.vue';
 export default {
   name: "Video",
   computed: {
@@ -78,6 +145,11 @@ export default {
       isCategoryClicked: false,
       isShowDocument: false,
       datafiltering: [],
+      drawer: false,
+      selectedCategory: {
+        title: "",
+        slug: ""
+      },
       listData: [
         {
           id: "23453",
@@ -140,7 +212,8 @@ export default {
   components: {
     Breadcrumbs,
     OtherNews,
-    C_CategorySection
+    C_CategorySection,
+    SearchingModal
   },
   methods: {
     setBreadcrumsData() {
@@ -167,27 +240,42 @@ export default {
     },
     getCategoryBySlug(event) {
       var filteredList = [];
-      if (event != '') {
-        if (event === this.$store.state.settings.allCategory) {
-          filteredList = this.listData;
-        } else {
-          filteredList = this.listData.filter((e) => e.slugCategory === event).map((e) => { return e });
-        }
+      if (typeof event === 'string') {
+        filteredList = this.listData
+          .filter(
+            ({ title }) => [title]
+              .some(value => value.toLowerCase().includes(event.toLowerCase()))
+          );
         this.isCategoryClicked = true;
-        if (filteredList.length == 0) {
-          this.isShowDocument = false;
-        } else {
-          this.isShowDocument = true;
+        this.selectedCategory.title = "";
+        this.selectedCategory.slug = "";
+      } else {
+        if (event != null) {
+          this.selectedCategory.title = event.text;
+          this.selectedCategory.slug = event.slug;
+          if (event.slug === this.$store.state.settings.allCategory) {
+            filteredList = this.listData;
+          } else {
+            filteredList = this.listData.filter((e) => e.slugCategory === event.slug).map((e) => { return e });
+          }
+          this.isCategoryClicked = true;
+
         }
       }
+
+      if (filteredList.length == 0) {
+        this.isShowDocument = false;
+      } else {
+        this.isShowDocument = true;
+      }
       this.datafiltering = filteredList;
+    },
+    created() {
+      this.setBreadcrumsData();
+    },
+    mounted() {
+      this.isShowDocument = this.listData.length > 0 ? true : false;
     }
-  },
-  created() {
-    this.setBreadcrumsData();
-  },
-  mounted() {
-    this.isShowDocument = this.listData.length > 0 ? true : false;
   }
 }
 </script> 
