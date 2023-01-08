@@ -1,5 +1,5 @@
 <template>
-    <v-container>
+    <div v-if="settings.screenSize.type.islg">
         <v-row class="mb-5">
 
             <v-col cols="2">
@@ -32,6 +32,9 @@
                                             </template>
                                         </v-img>
                                         <div>
+                                            <div class="subheading font-weight-medium mt-3 ml-3">
+                                                {{ image.title }}
+                                            </div>
                                             <h5 class="float-left font-weight-regular my-2">
                                                 <v-chip class="ma-2" small outlined :color="settings.color">
                                                     {{ image.category }}
@@ -58,7 +61,7 @@
             <component :is="child_component"></component>
         </GeneralDialog>
 
-    </v-container>
+    </div>
 
 </template>
 

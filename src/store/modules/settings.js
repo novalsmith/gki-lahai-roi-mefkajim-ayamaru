@@ -59,7 +59,7 @@ const state = {
         topLeft: [{
             name: "Jadwal Ibadah",
             path: "/jadwal",
-            icon: "mdi-calendar-multiselect-outline",
+            icon: "mdi-book-open-variant",
             outlined: false
         }, ],
         topRight: [{

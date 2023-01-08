@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <div v-if="settings.screenSize.type.islg">
     <v-row class="mb-5">
 
       <v-col cols="2">
@@ -54,7 +54,7 @@
       </v-col>
 
     </v-row>
-  </v-container>
+  </div>
 </template>
   
 <script>

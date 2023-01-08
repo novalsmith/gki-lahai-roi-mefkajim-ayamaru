@@ -15,34 +15,8 @@
           </v-col>
         </v-row>
         <v-divider></v-divider>
-        <v-list nav dense>
-          <v-list-item-group v-model="group" :active-class="settings.color" class="white--text">
-            <v-list-item v-for="(val, key) in categories" :key="key">
-              <v-list-item-title>{{ val.text }}</v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
-      <v-bottom-navigation fixed :color="settings.color" height="60">
-        <v-btn to="/">
-          <!-- <span>Home</span> -->
-          <v-icon>mdi-home</v-icon>
-        </v-btn>
-        <v-btn @click.stop="drawer = !drawer">
-          <!-- <span>Menu</span> -->
-          <v-icon>mdi-menu</v-icon>
-        </v-btn>
-        <v-btn>
-          <v-icon>
-            mdi-newspaper-variant-multiple
-          </v-icon>
-        </v-btn>
-
-        <v-btn to="/pencarian">
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-      </v-bottom-navigation>
+        <C_CategorySection />
+      </v-navigation-drawer> 
     </div>
     <v-container>
       <v-btn text @click.stop="drawer = !drawer">
@@ -52,11 +26,7 @@
       <!-- <v-spacer></v-spacer> -->
       <span class="text-h7 mx-2 text-right grey--text">Natal</span>
     </v-container>
-    <v-toolbar elevation="0" color="primary">
-      <!-- <v-btn icon @click="dialog = false" class="mx-5">
-        <v-icon>mdi-menu</v-icon>
-        <span class="text-h7">Natal</span>
-      </v-btn> -->
+    <v-toolbar elevation="0" color="primary"> 
       <v-text-field dense rounded filled width="100%" class="mt-7" placeholder="Masukan kata yang ingin dicari disini"
         prepend-inner-icon="mdi-magnify">
       </v-text-field>
@@ -78,6 +48,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import C_CategorySection from '@/components/C_CategorySection.vue';
 // import { width, type } from 'screenSize';
 // const screenSize = new useBreakpoints();
 export default {
@@ -144,6 +115,9 @@ export default {
     searchingButton() {
       this.dialog = true;
     }
+  },
+  components: {
+    C_CategorySection
   }
 }
 </script>

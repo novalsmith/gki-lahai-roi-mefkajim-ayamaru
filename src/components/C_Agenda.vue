@@ -1,16 +1,13 @@
 <template>
-    <v-container>
-        <v-row class="mb-5">
-
+    <div v-if="settings.screenSize.type.islg">
+        <v-row class="mb-5"> 
             <v-col cols="2">
                 <h4>Kategori</h4>
             </v-col>
             <v-col cols="10">
                 <C_CategorySection @getCategoryBySlug="getCategoryBySlug" />
             </v-col>
-        </v-row>
-
-
+        </v-row> 
         <v-row>
             <v-col md="4" v-for="item in agendaData">
                 <div>
@@ -63,9 +60,8 @@
                     Sementara belum ada data
                 </v-alert>
             </v-col>
-        </v-row>
-
-    </v-container>
+        </v-row> 
+    </div>
 
 </template>
 

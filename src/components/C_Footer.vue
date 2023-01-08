@@ -1,6 +1,7 @@
 <template>
   <v-footer padless color="primary">
     <div v-if="!settings.screenSize.type.islg">
+      <!-- <DrawerNavigations @drawerData=drawerData :headerTitle="headerTitleValue" :drawer="drawerVal"/> -->
       <v-navigation-drawer v-model="drawer" fixed left class="rounded-r-lg" style="position: fixed; z-index: 888;">
         <v-row class="my-1 mx-1">
           <v-col md="10">
@@ -16,7 +17,7 @@
         </v-row>
         <v-divider></v-divider>
 
-        <v-list nav dense>
+        <v-list nav dense class="text-uppercase">
           <div v-for="(link, i) in menu.right" :key="i">
 
             <v-list-item v-if="!link.submenu" :to="link.path" :active-class="settings.color + ' white--text'">
@@ -38,8 +39,8 @@
             </v-list-group>
           </div>
         </v-list>
-      </v-navigation-drawer>
-      <v-bottom-navigation fixed :color="settings.color" height="60" style="position: fixed; z-index: 999;">
+      </v-navigation-drawer>  
+       <v-bottom-navigation fixed :color="settings.color" height="60" style="position: fixed; z-index: 999;">
         <v-btn to="/">
           <span>Home</span>
           <v-icon>mdi-home</v-icon>
@@ -49,13 +50,13 @@
           <v-icon>mdi-menu</v-icon>
         </v-btn>
 
-        <v-btn to="/pencarian">
+        <v-btn to="/informasi">
           <span>Info</span>
           <v-icon>mdi-newspaper-variant-multiple</v-icon>
         </v-btn>
         <v-btn to="/jadwal">
-          <span>Jadwal</span>
-          <v-icon>mdi-calendar-multiselect-outline</v-icon>
+          <span>Ibadah</span>
+          <v-icon>mdi-book-open-variant</v-icon>
         </v-btn>
 
       </v-bottom-navigation>
@@ -68,6 +69,8 @@
 
 <script>
 import { mapState } from "vuex";
+import DrawerNavigations from '@/components/C_DrawerNavigations.vue';
+
 export default {
   computed: {
     ...mapState(['settings'])
@@ -79,6 +82,7 @@ export default {
     notifications: false,
     sound: true,
     widgets: false,
+    headerTitleValue: "",
     items: [
       {
         image: 'https://cdn-images-1.medium.com/max/1024/1*9C9hLji68wV373tk8okLYA.jpeg',
@@ -129,7 +133,14 @@ export default {
     },
     getMenuData() {
       this.menu = this.$store.state.settings['menu'];
+    },
+    drawerData(val) {
+      this.headerTitleValue = val.headerTitle;
+      this.drawerVal = true;
     }
+  },
+  components: {
+    DrawerNavigations
   }
 }
 </script>
