@@ -27,8 +27,7 @@
                                                 <v-img :height="settings.defaultImageSmallContentHeight"
                                                     :src="require(`../assets/${image.source}`)" :alt="image.alt"
                                                     :lazy-src="require(`../assets/${image.source}`)"
-                                                    class="grey darken-4 rounded-lg"
-                                                    width="300">
+                                                    class="grey darken-4 rounded-lg" width="300">
                                                     <template v-slot:placeholder>
                                                         <v-row class="fill-height ma-0" align="center" justify="center">
                                                             <v-progress-circular indeterminate color="grey lighten-5">
@@ -42,8 +41,8 @@
 
                                                 <div class="mt-3">
                                                     <h3 class="font-weight-medium grey--text">{{ image.total }} Foto {{
-        image.title
-}}</h3>
+                                                        image.title
+                                                    }}</h3>
                                                     <h5 class="float-left font-weight-regular my-2">
                                                         <v-chip class="ma-2" small outlined :color="settings.color">
                                                             {{ image.category }}
