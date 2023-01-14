@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in user" :key="item.userID">
+                <tr v-for="item in user">
                     <td>{{ item.name }}</td>
                     <td>{{ item.email }}</td>
                 </tr>
@@ -144,7 +144,7 @@ export default {
     },
     created() {
         this.getSettings();
-        // this.getUsers();
+        this.getUsers();
         // this.whatsAppMessage(); //<-- for testing send the whatsapp message from API
     },
     computed: {
